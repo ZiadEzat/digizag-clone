@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://digizag.hasoffers.com/publisher/#!/dashboard -->
+<html id="appBase" class="ng-scope" lang="en" ng-app="hasApp" ng-controller="Controllers.app"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title ng-bind-template="DigiZag - Summary Report" class="ng-binding">DigiZag - Summary Report</title>
+  <meta name="description" content="">
+
+  <link rel="icon" type="image/x-icon" href="https://media.go2app.org/user_content/brand/logos/digizag/favicon_1641114218.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://media.go2app.org/user_content/brand/logos/digizag/favicon_1641114218.ico">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script async="" src="./DigiZag - Summary Report_files/analytics.js.download"></script><script async="" src="./DigiZag - Summary Report_files/datadog-logs.js.download"></script><script>
+    var _collectedErrors = [];
+    window.onerror = function() {
+      _collectedErrors.push(JSON.stringify(arguments));
+    }
+
+    var displayError = function() {
+      var preload = document.getElementById('preload');
+      var contents = document.createElement('span');
+      var html = '<p style="margin: 60px 0 20px 0;">There appears to have been an issue loading this page.<br />When contacting us about this issue, please include the following:</p>';
+      html += '<textarea style="padding: 4px; font-family: monospace; width: 700px; height: 100px; font-size: 10px; line-height: 12px;">' + _collectedErrors.join('\n'); + '<textarea>';
+      contents.innerHTML = html;
+      preload.className = '';
+      preload.appendChild(contents);
+    }
+
+    setTimeout(function() {
+      var main_container = document.getElementById('main_container');
+      if (_collectedErrors.length > 10 || (main_container && main_container.hasAttribute('ng-cloak'))) {
+        displayError();
+      }
+    }, 12000);
+  </script>
+
+  <link rel="stylesheet" href="./DigiZag - Summary Report_files/screen.css">
+  <link href="./DigiZag - Summary Report_files/font-awesome.min.css" rel="stylesheet">
+
+  <script>
+  (function(root) {
+      'use strict';
+      root.Config = {"affiliate_id":"513","affiliate_user_id":"515","api_v4_path":"https:\/\/ssl-api.hasoffers.com","datadog_browser_token":"pub95d653ed2de50561151700c57e88c1e5","enable_datadog_browser_logs":true,"api_endpoint":"https:\/\/api-p03.hasoffers.com\/v3\/","api_network_id":"digizag","favicon":"<link rel=\"icon\" type=\"image\/x-icon\" href=\"https:\/\/media.go2app.org\/user_content\/brand\/logos\/digizag\/favicon_1641114218.ico\" \/>\n<link rel=\"shortcut icon\" type=\"image\/x-icon\" href=\"https:\/\/media.go2app.org\/user_content\/brand\/logos\/digizag\/favicon_1641114218.ico\" \/>\n","network_logo":"<h1><a href=\"\/\">DigiZag<\/a><\/h1>","network_name":"DigiZag","enable_ms_clarity":false,"partner_token":"VIRTUAL_SESSION_TOKEN","session_token":"ZGlnaXphZzphZmZpbGlhdGVfdXNlcjo1MTU6NjpiNTFkNjczNDk0ZjVkZDNjYjFkNDFlM2Q5YWNkYmE3Nzk2MDA4MGU3NzMwYjg3YzU3M2ZlNDk1ZDgyMTk3M2Mx","tunepay_enabled":null,"txl_theme_information":{"theme":"#dark_nav_theme","accent":"#00cc66","hover":"#00c763","custom":"false","header_background_color":"#FFF","header_text_color":"#20252D","color100":"#d3f6e4","color200":"#adeece","color600":"#009f4f"}};
+
+      if(root.Config.network_logo) {
+          try {
+              // Session returns an html image tag or an H1 with the network name. We should ignore non images.
+              var wrapper = document.createElement('div');
+              wrapper.innerHTML = root.Config.network_logo;
+
+              if (wrapper.firstChild.tagName != 'A') {
+                  root.Config.network_logo = false;
+              } else {
+                  var img = wrapper.getElementsByTagName('img');
+                  if (img.length) {
+                      root.Config.network_logo = img[0].getAttribute('src');
+                  } else {
+                      root.Config.network_logo = false;
+                  }
+              }
+          } catch (e) {
+              root.Config.network_logo = false;
+          }
+      }
+
+      root.Config.Enums = {
+          'categoryTypes': [
+              'industry',
+              'region',
+              'payout_model',
+              'publisher_type'
+          ],
+          'currencyFields' : [
+              'Stat.payout',
+              'Stat.sale_amount'
+          ],
+          'conversionStatus' : {
+              'approved' : 'Approved',
+              'pending'  : 'Pending',
+              'rejected' : 'Rejected',
+              'active'   : 'Active'
+          },
+          'offerPayoutType' : {
+              'cpa_flat'       : 'CPA',
+              'cpa_percentage' : 'CPS',
+              'cpa_both'       : 'CPA + CPS',
+              'cpc'            : 'CPC',
+              'cpm'            : 'CPM'
+          },
+          'offerPixelType' : {
+              'code' : 'HTML / JavaScript Code',
+              'image' : 'Image Pixel',
+              'url' : 'Postback URL'
+          },
+          'offerFileType' : {
+              'file'            : 'File',
+              'image banner'    : 'Image Banner',
+              'flash banner'    : 'Flash Banner',
+              'email creative'  : 'Email Creative',
+              'offer thumbnail' : 'Offer Thumbnail',
+              'text ad'         : 'Text Link',
+              'html ad'         : 'HTML Ad',
+              'hidden'          : 'Hidden Asset',
+              'xml feed'        : 'XML Feed'
+          }
+      };
+  })(this);
+  </script>
+
+<script>
+var DatadogclientToken = 'pub95d653ed2de50561151700c57e88c1e5'; 
+   (function(h,o,u,n,d) {
+        h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+        d=o.createElement(u);d.async=1;d.src=n
+        n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+      })(window,document,'script','https://www.datadoghq-browser-agent.com/us1/v4/datadog-logs.js','DD_LOGS')
+      window.DD_LOGS.onReady(function() {
+          window.DD_LOGS.init({
+            clientToken: DatadogclientToken,
+            site: 'datadoghq.com',
+            forwardErrorsToLogs: true,
+            sessionSampleRate: 100,
+          })
+        })
+    </script>
+    </head>
+
+<body ng-class="bodyClass + &#39; &#39; + menuBodyClass" mobile-header-hide="" class="menu-open dashboard">
+  <!-- load theme stylesheet with brand color customizations -->
+  <style class="ng-scope">/**
+ * _theme-color-template.scss
+ *
+ * These rgba values are placeholders for string replacement.
+ * Build SASS project with this theme to produce css file for dynamic color updates.
+ *
+ * alpha value of 0.001 identifies it as a placeholder value to be replaced
+ * blue value should map to the saved theme color
+ */
+/**
+ * Default theme variables
+ *
+ * These variables will be set if they do not exist
+ *
+ * Primary Defaults have an explicit hex value.
+ * Derived Defaults are set with variables.
+ */
+/**
+ * HasOffers 2014 - Copyright HasOffers
+ * Author - Andrus, del Valle @ HasOffers
+ */
+/* Bourbon 4.0.2
+ * http://bourbon.io
+ * Copyright 2011-2014 thoughtbot, inc.
+ * MIT License */
+@media only screen and (max-width: 47.125em) {
+  .module h2,
+  .quickstats.module.on h2, #single-offer .offer-details h2,
+  #single-offer .description-approved h2,
+  #single-offer .dne-lists h2,
+  #single-offer .offer-creatives h2,
+  #single-offer .tracking-params h2, .dashboard .module h2 {
+    background-color: #f3f3f3;
+    border-top: 1px solid #b8b8b8;
+    border-bottom: 1px solid #b8b8b8;
+    color: #313845 !important;
+    text-shadow: 0px 1px 1px #EEF0F2; } }
+
+::selection {
+  background: #00c763;
+  color: #EEF0F2; }
+
+.txl-icon circle,
+.txl-icon ellipse,
+.txl-icon line,
+.txl-icon path,
+.txl-icon polygon,
+.txl-icon polyline,
+.txl-icon rect {
+  fill: #313845; }
+
+a, a:link, a:hover, a:active, a:visited {
+  color: #20252D; }
+
+a:hover {
+  color: #00c763; }
+
+a:active {
+  color: #00c763; }
+
+h2 {
+  color: #313845; }
+
+label {
+  color: #313845; }
+
+hr {
+  border-color: #b8b8b8;
+  border-style: solid; }
+
+body,
+#content {
+  background-color: #EEF0F2;
+  color: #313845; }
+
+a.btn-primary,
+a.btn-primary:hover,
+a.btn-warning,
+a.btn-warning:hover,
+a.btn-danger,
+a.btn-danger:hover,
+a.btn-success,
+a.btn-success:hover,
+a.btn-info,
+a.btn-info:hover,
+a.btn-inverse,
+a.btn-inverse:hover {
+  background-color: #EEF0F2;
+  border-color: #b8b8b8;
+  color: #20252D; }
+
+.btn, .btn:hover, .btn:active, .btn:link, .btn:visited,
+.btn.close,
+.btn.close:hover,
+.btn.close:active,
+.btn.close:link,
+.btn.close:visited {
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #00cc66;
+  color: #FFF;
+  border-radius: 2px;
+  border: 0 transparent;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  text-transform: none;
+  cursor: pointer;
+  transition: background-color 0.2s cubic-bezier(0.23, 1, 0.32, 1) 0s; }
+.btn:hover, .btn.hover, .btn:focus,
+.btn.close:hover,
+.btn.close.hover,
+.btn.close:focus {
+  background-color: #00c763;
+  border-color: #858585;
+  color: #FFF; }
+.btn.active, .btn:active, .btn.btn-primary,
+.btn.close.active,
+.btn.close:active,
+.btn.close.btn-primary {
+  background-color: #00c763;
+  background-image: inherit;
+  border-color: #00c763;
+  color: #EEF0F2; }
+.btn.disabled, .btn[disabled],
+.btn.close.disabled,
+.btn.close[disabled] {
+  background-color: #D9DEE2;
+  border-color: #b8b8b8;
+  color: #20252D;
+  border-radius: 2px; }
+  .btn.disabled:hover, .btn.disabled.hover, .btn.disabled:active, .btn.disabled.active, .btn.disabled:focus, .btn.disabled.btn-primary, .btn[disabled]:hover, .btn[disabled].hover, .btn[disabled]:active, .btn[disabled].active, .btn[disabled]:focus, .btn[disabled].btn-primary,
+  .btn.close.disabled:hover,
+  .btn.close.disabled.hover,
+  .btn.close.disabled:active,
+  .btn.close.disabled.active,
+  .btn.close.disabled:focus,
+  .btn.close.disabled.btn-primary,
+  .btn.close[disabled]:hover,
+  .btn.close[disabled].hover,
+  .btn.close[disabled]:active,
+  .btn.close[disabled].active,
+  .btn.close[disabled]:focus,
+  .btn.close[disabled].btn-primary {
+    background-color: #EEF0F2;
+    border-color: #b8b8b8;
+    color: #20252D; }
+
+.btn.show-menu {
+  background-color: #DADDE1;
+  border-color: #DADDE1;
+  color: #1B222E; }
+
+.btn.btn-secondary,
+.btn.btn-cancel {
+  background-color: #DADDE1;
+  color: #1B222E; }
+  .btn.btn-secondary:hover,
+  .btn.btn-cancel:hover {
+    background-color: #C3C9D1;
+    color: #1B222E;
+    border: 0 transparent; }
+
+.dropdown-menu {
+  box-shadow: 2px 6px 8px 0px rgba(0, 0, 0, 0.3);
+  background-color: #EEF0F2; }
+  .dropdown-menu li a {
+    color: #20252D; }
+  .dropdown-menu li > a:hover {
+    background-color: #00cc66;
+    color: #20252D; }
+  .dropdown-menu li.active > a,
+  .dropdown-menu li.active > a:hover {
+    background-color: #00cc66;
+    color: #FFF; }
+
+.grid-pagination a.btn.dropdown-toggle, .grid-pagination a.btn.nav {
+  color: #20252D; }
+  .grid-pagination a.btn.dropdown-toggle:hover, .grid-pagination a.btn.nav:hover {
+    color: #00c763; }
+.grid-pagination a.btn.disabled:hover {
+  color: #20252D; }
+
+textarea,
+select[multiple],
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: #FFF;
+  border-color: #b8b8b8;
+  border-style: solid;
+  color: #313845; }
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #00cc66;
+  box-shadow: none; }
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: #313845; }
+
+.tooltip.left .tooltip-arrow {
+  border-left-color: #313845; }
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #313845; }
+
+.tooltip.right .tooltip-arrow {
+  border-right-color: #313845; }
+
+.tooltip-inner {
+  background-color: #313845;
+  color: #EEF0F2; }
+
+.tooltip_content thead tr {
+  border-bottom: solid 1px #333;
+  color: #333; }
+
+.popover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px; }
+  .popover.top .arrow {
+    border-top-color: #313845; }
+  .popover.right .arrow {
+    border-right-color: #313845; }
+  .popover.bottom .arrow {
+    border-bottom-color: #313845; }
+  .popover.left .arrow {
+    border-left-color: #313845; }
+
+.popover-inner {
+  background-color: #313845; }
+
+.popover-content {
+  background-color: #EEF0F2;
+  color: #313845; }
+
+.popover-title {
+  background-color: #FFF;
+  border-bottom-color: #b8b8b8; }
+
+.alert-success {
+  background-color: #556278;
+  border-color: #556278;
+  color: #FFF; }
+
+.alert-danger,
+.alert-error {
+  background-color: #f00000;
+  border-color: #f00000;
+  color: #FFF; }
+
+.sparkline {
+  padding: 2px; }
+  .sparkline .textlabel {
+    background: #20252D;
+    color: #EEF0F2;
+    font-weight: bold; }
+
+.prev-performance .positive {
+  color: #63be13; }
+.prev-performance .negative {
+  color: #f00000; }
+
+.quickstats,
+.dashboard .quickstats,
+.taskbar,
+.taskbar .panel-container,
+.details-wrap,
+.tracking,
+.api-key-request {
+  background-color: #FFF;
+  border-top: solid 5px #00cc66; }
+
+.tools .panel {
+  background-color: transparent; }
+
+header h1,
+body h1:first-child {
+  color: #313845; }
+
+.globalLoadingIndicator {
+  background-color: #283346;
+  border: none;
+  color: #EEF0F2; }
+
+#flashError,
+#flashSuccess {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 3px 7px; }
+
+.loading .loading-icon,
+.loading span {
+  background-color: #f3f3f3;
+  color: #313845; }
+
+#side-toggle i, #side-toggle:before {
+  background-color: #EEF0F2;
+  border-color: #b8b8b8;
+  border-style: solid; }
+
+.adtag-options {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  border-top: 5px solid #00cc66;
+  background-color: #FFF; }
+  .adtag-options #tracking-domain {
+    border-bottom: 1px solid #b8b8b8; }
+  .adtag-options > ul > li {
+    border-top: 1px solid #b8b8b8; }
+
+.offer-details .table tr td, .offer-details .table tr:hover td {
+  background-color: #EEF0F2; }
+  .offer-details .table tr td:first-child, .offer-details .table tr:hover td:first-child {
+    background-color: #f3f3f3;
+    color: #313845; }
+
+.adgroup-details .bordered {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  border-top: 5px solid #00cc66; }
+
+.adgroup-details tbody {
+  background-color: #fff; }
+  .adgroup-details tbody tr :first-child {
+    background-color: #EEF0F2; }
+    .adgroup-details tbody tr :first-child:hover {
+      border-top: solid 1px #b8b8b8;
+      border-bottom: solid 1px #b8b8b8; }
+
+.table-tabs {
+  border-bottom: 1px solid #b8b8b8; }
+  .table-tabs .tab {
+    margin: 0 0px -1px 0; }
+    .table-tabs .tab:first-child {
+      border-top-left-radius: 4px; }
+  .table-tabs a {
+    background-color: #e5e8eb;
+    border: 1px solid #b8b8b8;
+    color: #313845; }
+    .table-tabs a:hover {
+      background-color: #FFF; }
+    .table-tabs a.active {
+      background-color: #FFF;
+      border-bottom: 1px solid #EEF0F2;
+      color: #313845; }
+
+@media only screen and (max-width: 47.125em) {
+  header.mobile .bar {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 7px;
+    background-color: #FFF;
+    border-bottom: 2px solid #00cc66; }
+    header.mobile .bar #logo {
+      margin-top: 3px;
+      text-align: center; }
+      header.mobile .bar #logo img {
+        display: block;
+        max-height: 34px;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto; }
+    header.mobile .bar h1 {
+      color: #EEF0F2;
+      text-shadow: rgba(0, 0, 0, 0.5) 1px 1px; }
+
+  .offer-count .btn-group > .dropdown-toggle {
+    color: #313845; }
+
+  #chart-controls {
+    border: 1px solid #b8b8b8; }
+
+  #chart {
+    border: 1px solid #b8b8b8; } }
+#page-header {
+  background: #FFF;
+  border-bottom-color: #00cc66; }
+  #page-header a {
+    color: #20252D;
+    border-bottom-color: #b8b8b8; }
+  #page-header div #searchbar form {
+    border-bottom-color: #97A2B2; }
+    #page-header div #searchbar form button .txl-icon circle,
+    #page-header div #searchbar form button .txl-icon ellipse,
+    #page-header div #searchbar form button .txl-icon line,
+    #page-header div #searchbar form button .txl-icon path,
+    #page-header div #searchbar form button .txl-icon polygon,
+    #page-header div #searchbar form button .txl-icon polyline,
+    #page-header div #searchbar form button .txl-icon rect {
+      fill: #97A2B2; }
+    #page-header div #searchbar form input {
+      background-color: #FFF;
+      color: #20252D; }
+
+.sidebar {
+  box-shadow: inset -6px 0px 10px -6px rgba(0, 0, 0, 0.1);
+  background-color: #424C5D; }
+  .sidebar .txl-icon circle,
+  .sidebar .txl-icon ellipse,
+  .sidebar .txl-icon line,
+  .sidebar .txl-icon path,
+  .sidebar .txl-icon polygon,
+  .sidebar .txl-icon polyline,
+  .sidebar .txl-icon rect {
+    fill: #FFF; }
+  .sidebar input[type="search"] {
+    background-color: #EEF0F2; }
+  .sidebar a {
+    color: #FFF; }
+
+.sidebar-main-group {
+  background-color: #313845; }
+  .sidebar-main-group li:hover {
+    background-color: #00cc66; }
+
+.sidebar-main-group-header:hover {
+  background-color: #00cc66; }
+
+.sidebar-main-group--search {
+  border-bottom-color: #556278;
+  border-top-color: #556278; }
+  .sidebar-main-group--search h2 {
+    color: #FFF; }
+
+.sidebar-main-group--manager {
+  color: #FFF; }
+  .sidebar-main-group--manager h2 {
+    color: #FFF; }
+
+.sidebar-utilities {
+  box-shadow: inset -6px 0px 10px -6px rgba(0, 0, 0, 0.1);
+  background-color: #424C5D; }
+  .sidebar-utilities .current ul,
+  .sidebar-utilities .open ul {
+    border-bottom-color: #556278; }
+  .sidebar-utilities ul.open {
+    border-bottom-color: #556278; }
+  .sidebar-utilities > li {
+    border-bottom-color: #556278; }
+    .sidebar-utilities > li > a {
+      border-right-color: #556278; }
+
+.sidebar-main-group-header {
+  box-shadow: inset -6px 0px 10px -6px rgba(0, 0, 0, 0.1);
+  background-color: #424C5D;
+  border-top-color: #556278;
+  color: #FFF; }
+  .sidebar-main-group-header:hover {
+    color: #FFF; }
+  .expanded .sidebar-main-group-header:hover {
+    color: #FFF; }
+
+.sidebar-main-group--small {
+  border-bottom-color: #556278;
+  border-top-color: #556278; }
+
+.taskbar .tasks > li {
+  border-color: #b8b8b8;
+  border-style: solid; }
+  .taskbar .tasks > li a i {
+    color: #00cc66; }
+  .taskbar .tasks > li#search input[type="text"] {
+    border: 1px solid #b8b8b8; }
+    .taskbar .tasks > li#search input[type="text"]:disabled {
+      background-color: #EEF0F2; }
+  .taskbar .tasks > li.on a {
+    color: #00c763; }
+.taskbar .panel-display .actions,
+.taskbar .panel-display .datepicker-controls {
+  border-top: 1px solid #b8b8b8; }
+.taskbar .panel-display.creative {
+  border-bottom: 1px solid #b8b8b8; }
+.taskbar .panel-display.country .selected-countries .all-countries-label {
+  background: #f3f3f3;
+  border-left: 1px solid #b8b8b8;
+  border-right: 1px solid #b8b8b8;
+  border-top: 1px solid #b8b8b8;
+  color: #313845; }
+.taskbar .panel-display.country .selected-countries > div:first-child span {
+  background-color: #FFF;
+  border-style: solid;
+  border-color: #b8b8b8;
+  line-height: 24px; }
+.taskbar .panel-display.advanced-search .as-filter {
+  border-right: 1px solid #b8b8b8; }
+  .taskbar .panel-display.advanced-search .as-filter ul li {
+    border-color: #b8b8b8;
+    border-style: solid; }
+@media only screen and (max-width: 47.125em) {
+  .taskbar .panel-display {
+    background: rgba(255, 255, 255, 0.8); }
+    .taskbar .panel-display .actions {
+      background-color: #f3f3f3; } }
+.taskbar .panel-container {
+  box-shadow: 2px 6px 8px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #b8b8b8; }
+  @media only screen and (max-width: 47.125em) {
+    .taskbar .panel-container dl dt:first-child {
+      background-color: #f3f3f3;
+      border-bottom: 1px solid #b8b8b8;
+      border-top: 1px solid #b8b8b8; } }
+.taskbar .panel {
+  border-top: 1px solid #b8b8b8; }
+.taskbar a.dropdown-toggle {
+  color: #20252D; }
+  .taskbar a.dropdown-toggle:hover {
+    color: #00c763; }
+  .taskbar a.dropdown-toggle:active {
+    color: #00c763; }
+@media only screen and (max-width: 47.125em) {
+  .taskbar {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 30%, rgba(184, 184, 184, 0.1) 70%, rgba(184, 184, 184, 0.2) 100%);
+    background-size: cover;
+    box-shadow: 0 0 10px 2px rgba(184, 184, 184, 0.3); }
+    .taskbar.ui-scrollfix {
+      background: rgba(238, 240, 242, 0.9);
+      border-bottom: 1px solid #b8b8b8; } }
+
+div.datepicker a {
+  color: #313845; }
+  div.datepicker a:hover {
+    color: #00c763; }
+div.datepicker th {
+  color: #313845; }
+div.datepicker tbody.datepickerDays td {
+  border: 1px solid #FFF; }
+div.datepicker tbody.datepickerDays td.datepickerSelected {
+  background: #00cc66; }
+  div.datepicker tbody.datepickerDays td.datepickerSelected a {
+    color: #EEF0F2; }
+div.datepicker tbody.datepickerDays td.datepickerNotInMonth a {
+  color: #313845; }
+  div.datepicker tbody.datepickerDays td.datepickerNotInMonth a:hover {
+    color: #00c763; }
+div.datepicker tbody.datepickerDays td.datepickerNotInMonth.datepickerSelected {
+  background: #f3f3f3; }
+  div.datepicker tbody.datepickerDays td.datepickerNotInMonth.datepickerSelected a {
+    color: #00c763; }
+
+@media only screen and (max-width: 47.125em) {
+  .datepicker-wrapper .panel-container ul {
+    border-top: none; } }
+
+.datepicker-layout .datepicker-layout-left {
+  border-right: 1px solid #b8b8b8; }
+  .datepicker-layout .datepicker-layout-left li:first-child {
+    color: #313845; }
+  @media only screen and (max-width: 47.125em) {
+    .datepicker-layout .datepicker-layout-left {
+      border-right: none; }
+      .datepicker-layout .datepicker-layout-left li:first-child {
+        border-bottom: 1px solid #b8b8b8;
+        border-top: 1px solid #b8b8b8; } }
+
+.modal {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  background-color: #FFF;
+  border-bottom: 2px solid #EEF0F2;
+  border-top: 2px solid #EEF0F2;
+  color: #000000; }
+
+.modal-header {
+  color: #000000;
+  margin: 0px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #FFF;
+  border-bottom: 1px solid #b8b8b8;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  max-width: 100%;
+  margin-bottom: 10px; }
+  .modal-header h3 {
+    margin-left: 10px; }
+
+.modal-body {
+  background-color: #EEF0F2;
+  border: 1px solid #b8b8b8;
+  color: #313845; }
+  .modal-body .downloadlink {
+    color: #00cc66; }
+
+.modal-carrousel-pager-left,
+.modal-carrousel-pager-right {
+  color: #20252D;
+  text-shadow: 0 -1px #b8b8b8; }
+  .modal-carrousel-pager-left:hover,
+  .modal-carrousel-pager-right:hover {
+    color: #00c763; }
+  .modal-carrousel-pager-left:active,
+  .modal-carrousel-pager-right:active {
+    color: #00c763; }
+
+body.account #content h4 {
+  border-bottom: 1px solid #b8b8b8;
+  color: #313845; }
+body.account .company-details .company-name,
+body.account .timestamps-panel span,
+body.account .company-details .contact span,
+body.account #user-details-panel h3 span,
+body.account label {
+  color: #313845; }
+body.account .row-fluid [class*="span4"] {
+  border-right: 1px solid #b8b8b8; }
+  @media only screen and (max-width: 47.125em) {
+    body.account .row-fluid [class*="span4"] {
+      border-bottom: 1px solid #b8b8b8; } }
+body.account [disabled],
+body.account [readonly] {
+  background-color: #D9DEE2; }
+
+@media only screen and (max-width: 47.125em) {
+  .adgroupdetails .modal-container {
+    background: rgba(238, 240, 242, 0.8); } }
+
+@media only screen and (max-width: 47.125em) {
+  .billing .quickstats > div {
+    border-bottom: 1px solid #b8b8b8; }
+  .billing .quickstats h3 {
+    border-right: 1px solid #b8b8b8; } }
+.billing .billing-details > div {
+  background-color: #FFF; }
+  .billing .billing-details > div.billing-methods {
+    box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+    border-top: 5px solid #00cc66; }
+@media only screen and (max-width: 47.125em) {
+  .billing .billing-details > div {
+    background-color: #EEF0F2;
+    border-left: none;
+    border-right: none; }
+    .billing .billing-details > div.billing-methods {
+      border-top: none; } }
+
+.invoice .invoice-accounts .paid-stamp {
+  border: 4px solid #63be13;
+  color: #63be13; }
+.invoice .invoice-memo p {
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #b8b8b8;
+  border-top: 1px solid #b8b8b8;
+  color: #313845; }
+.invoice td.invoice-amount .negative-amount {
+  color: #f00000; }
+
+.message .delete_in_progress {
+  color: #313845; }
+.message .confirm-group {
+  background-color: #f3f3f3; }
+.message .message table {
+  border-bottom: 1px solid #b8b8b8;
+  border-top: 1px solid #b8b8b8; }
+.message .message .span2 {
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #b8b8b8;
+  border-right: 1px solid #b8b8b8;
+  color: #313845; }
+.message .message .span10 {
+  border-bottom: 1px solid #b8b8b8; }
+
+.api-key .api-key-request {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  color: #313845; }
+.api-key .generate-key {
+  border-bottom: 1px solid #b8b8b8; }
+
+input[type="text"].offer-pixel-code.copied, input[type="text"].offerfile-code-input.copied {
+  background-color: #EEF0F2; }
+
+.pixel-status .icon-ellipsis-horizontal {
+  color: blue; }
+.pixel-status .icon-ok {
+  color: #63be13; }
+.pixel-status .icon-remove {
+  color: #f00000; }
+
+.mobile-app h3 {
+  border-color: #b8b8b8; }
+.mobile-app .tutorial-list {
+  border-color: #b8b8b8; }
+  .mobile-app .tutorial-list ul li.selected {
+    border-color: #b8b8b8;
+    background: white; }
+    .mobile-app .tutorial-list ul li.selected:after {
+      border-right-color: white; }
+    .mobile-app .tutorial-list ul li.selected:before {
+      border-right-color: #b8b8b8; }
+
+jq-grid.compact .table tbody tr td.sorted-column {
+  background-color: rgba(243, 243, 243, 0.5); }
+jq-grid.compact .table tbody tr.alt-row td.sorted-column {
+  background-color: #EEF0F2; }
+jq-grid.compact .table tbody tr:hover {
+  border-top: solid 1px #b8b8b8;
+  border-bottom: solid 1px #b8b8b8; }
+
+.ui-th-column, .ui-jqgrid .ui-jqgrid-htable th.ui-th-column {
+  border-right: 1px solid #b8b8b8 !important; }
+
+.ui-jqgrid-btable {
+  border-top-style: none !important; }
+
+.table tbody tr:hover > td, .table tbody tr.alt-row:hover > td, .table tbody tr.row-highlight > td, .table-striped tbody tr:nth-child(odd):hover > td,
+.table-striped tbody tr:nth-child(even):hover > td, .dashboard #recent-messages ul li:hover {
+  background-color: #d3f6e4; }
+
+.table {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  border-top: 3px solid #00cc66; }
+  .table thead {
+    background: #FFF;
+    color: #313845; }
+    .table thead th {
+      border-right: 1px solid #b8b8b8;
+      padding: 6px 8px 7px;
+      border-left: none;
+      border-bottom: 1px solid #00cc66; }
+      .table thead th.sortable i {
+        color: #313845; }
+  .table tr:last-child td {
+    border-bottom: solid 1px #b8b8b8; }
+  .table td {
+    border-top: 1px solid #b8b8b8; }
+  .table .offer-thumb img,
+  .table .offerThumbnail img {
+    border: 1px solid #b8b8b8; }
+
+.table-striped tbody td,
+.table-striped tbody th {
+  background-color: #f3f3f3; }
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+  background-color: #FFF; }
+.table-striped tbody tr:nth-child(even) td,
+.table-striped tbody tr:nth-child(even) th {
+  background-color: #EEF0F2; }
+.table-striped tbody tr:nth-child(odd):hover > td td,
+.table-striped tbody tr:nth-child(even):hover > td td {
+  background: transparent; }
+
+.hasTableMobileWrapper {
+  background-color: #EEF0F2; }
+
+.mobile-card-wrapper {
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #b8b8b8; }
+  .mobile-card-wrapper .card-header {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 30%, rgba(184, 184, 184, 0.1) 70%, rgba(184, 184, 184, 0.2) 100%);
+    background-size: cover;
+    border-bottom: 0px solid #b8b8b8; }
+    .mobile-card-wrapper .card-header.on {
+      border-bottom-width: 1px; }
+  .mobile-card-wrapper .card-header-sub {
+    color: #313845; }
+    .mobile-card-wrapper .card-header-sub .status-pending {
+      color: blue; }
+    .mobile-card-wrapper .card-header-sub .status-approved {
+      color: #63be13; }
+    .mobile-card-wrapper .card-header-sub .status-rejected {
+      color: #f00000; }
+  .mobile-card-wrapper .card-body {
+    transition: all, 0.5s;
+    background-color: #EEF0F2; }
+    .mobile-card-wrapper .card-body .data li .label {
+      color: #313845; }
+      .mobile-card-wrapper .card-body .data li .label.clickable {
+        color: #20252D; }
+    .mobile-card-wrapper .card-body .data li.on .label {
+      color: #00c763; }
+  .mobile-card-wrapper.is-compact .card-body {
+    display: none; }
+  .mobile-card-wrapper.is-compact.on {
+    border-bottom: 1px solid transparent; }
+
+.mobile-pager {
+  border: 1px solid #b8b8b8;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.05); }
+  .mobile-pager.disabled a, .mobile-pager.disabled a:hover {
+    color: #b8b8b8; }
+
+#report #chart,
+#report .chart-container {
+  background-color: #EEF0F2; }
+
+.metric-linetypes .text {
+  color: #313845;
+  text-transform: capitalize; }
+
+.no-data-available {
+  color: #313845; }
+  .no-data-available > div {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 30%, rgba(184, 184, 184, 0.1) 70%, rgba(184, 184, 184, 0.2) 100%);
+    background-size: cover;
+    border: 1px solid #b8b8b8;
+    color: #333; }
+    .no-data-available > div > p {
+      color: #333; }
+
+p.no-data-available {
+  border-bottom: 1px solid #b8b8b8; }
+
+#chart-controls .btn-group .btn {
+  background-color: #DADDE1;
+  color: #1B222E; }
+#chart-controls .btn-group .active {
+  background-color: #C3C9D1; }
+#chart-controls .btn-group.open .btn.dropdown-toggle, #chart-controls .btn-group.open .btn.dropdown-toggle:active {
+  background-color: #C3C9D1;
+  color: #1B222E; }
+#chart-controls .btn-group .dropdown-menu {
+  background-color: #FFF; }
+  #chart-controls .btn-group .dropdown-menu li a:hover {
+    background-color: #C3C9D1; }
+
+@-webkit-keyframes panel-flash {
+  0% {
+    background-color: rgba(32, 37, 45, 0.5); }
+  100% {
+    background-color: transparent; } }
+@keyframes panel-flash {
+  0% {
+    background-color: rgba(32, 37, 45, 0.5); }
+  100% {
+    background-color: transparent; } }
+#single-offer .dne-lists,
+#single-offer .pixels-postbacks,
+#single-offer .offer-targeting,
+#single-offer .offer-history,
+#single-offer .tracking,
+#single-offer #offerfile-link-group,
+#single-offer .promote-tracking.on,
+#single-offer .offer-description .thumb,
+#single-offer .offerfile-view-container {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px; }
+#single-offer .dne-lists,
+#single-offer .pixels-postbacks,
+#single-offer .offer-details,
+#single-offer .offer-history,
+#single-offer .offer-targeting {
+  border-top: solid 5px #00cc66;
+  background-color: #FFF; }
+#single-offer .offerfile-stat-column em {
+  color: #313845; }
+#single-offer .offerfile-stat-column span {
+  color: #313845; }
+#single-offer .promote-tracking li {
+  border-right: 1px solid #b8b8b8; }
+#single-offer .dne-lists input {
+  background-color: #f3f3f3;
+  color: #313845; }
+#single-offer .expires_in_days {
+  color: #f00000; }
+#single-offer .tracking > textarea {
+  border-color: #b8b8b8; }
+#single-offer .customize li {
+  color: #20252D; }
+  #single-offer .customize li:hover {
+    color: #00c763; }
+  #single-offer .customize li.active {
+    background-color: #00c763;
+    color: #FFF; }
+#single-offer .customize .header {
+  border-top: 1px solid #b8b8b8; }
+#single-offer .customize .panel.open {
+  border-top: 1px solid #b8b8b8; }
+@media only screen and (max-width: 47.125em) {
+  #single-offer .customize .panel {
+    border-top: 1px solid #b8b8b8; }
+    #single-offer .customize .panel .panel-header {
+      color: #20252D; } }
+#single-offer .offer-details > div > table > tbody > tr > td:first-child {
+  background-color: #f3f3f3;
+  color: #313845; }
+#single-offer .offer-details th,
+#single-offer .offer-details h3 {
+  background: #f3f3f3;
+  border: 1px solid #b8b8b8; }
+#single-offer .offer-details .details-wrap {
+  border: 1px solid #b8b8b8;
+  border-width: 0px 1px 1px; }
+#single-offer .offer-details .offer-description {
+  border-top-color: #b8b8b8; }
+#single-offer .offer-details .payout-details tbody {
+  border-bottom: 1px solid #b8b8b8; }
+#single-offer .no-data-available {
+  background-image: linear-gradient(to bottom, #b8b8b8 1px, rgba(184, 184, 184, 0.2) 2px, rgba(184, 184, 184, 0.2) 30px, #b8b8b8 31px, #EEF0F2 32px, #EEF0F2 60px);
+  border-bottom: 1px solid rgba(184, 184, 184, 0.2); }
+  #single-offer .no-data-available h4 {
+    color: #313845; }
+
+.offer-creative-modal img {
+  border: 1px solid #b8b8b8; }
+
+.dashboard .module h2 {
+  color: #313845;
+  padding: 20px 0 15px 10px; }
+  .dashboard .module h2 span.text {
+    float: none; }
+  @media only screen and (max-width: 47.125em) {
+    .dashboard .module h2 {
+      background: #f3f3f3;
+      color: #313845 !important; } }
+.dashboard .quickstats h2 {
+  background-color: #FFF; }
+.dashboard #recent-messages {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  border-top: solid 5px #00cc66;
+  background-color: #FFF; }
+  .dashboard #recent-messages li {
+    border-bottom: 1px solid #b8b8b8;
+    border-top: 1px solid transparent; }
+    .dashboard #recent-messages li p {
+      width: 100%; }
+    .dashboard #recent-messages li:nth-child(odd) {
+      background-color: #FFF;
+      color: #313845; }
+    .dashboard #recent-messages li > p a span {
+      border-bottom: dotted 1px #9AA2AE; }
+.dashboard #featured-offers {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  border-top: solid 5px #00cc66;
+  background-color: #FFF; }
+  .dashboard #featured-offers table th {
+    border-right: 1px solid #b8b8b8; }
+.dashboard #performance {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  border-top: solid 5px #00cc66; }
+  .dashboard #performance h2 {
+    background-color: #FFF;
+    border: 1px solid #b8b8b8;
+    border-bottom: none; }
+.dashboard .performance-chart-widget {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 0px, rgba(15, 17, 21, 0.2) 0px 1px 1px;
+  background-color: #FFF;
+  border: 1px solid #b8b8b8; }
+@media only screen and (max-width: 47.125em) {
+  .dashboard .performance-chart-widget {
+    background-color: #EEF0F2;
+    border: none; }
+  .dashboard .quickstats {
+    background-color: #EEF0F2; } }
+
+.w9Warning {
+  border: solid 1px #b8b8b8; }
+
+.quickstats {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  border-top: solid 5px #00cc66; }
+  .quickstats h2 {
+    color: #313845; }
+  .quickstats h2.module-header {
+    background-color: #f3f3f3; }
+  .quickstats h3 {
+    color: #313845; }
+  .quickstats p {
+    color: #313845;
+    opacity: .5; }
+
+.accordion-group {
+  box-shadow: rgba(15, 17, 21, 0.12) 0px 0px 2px, rgba(15, 17, 21, 0.2) 0px 2px 4px;
+  background-color: #FFF;
+  border-top: solid 5px #00cc66;
+  margin-bottom: 24px; }
+
+.settings input[type=radio]:checked + label:before {
+  color: #20252D; }
+.settings input[type="checkbox"]:checked + label:before {
+  color: #20252D; }
+
+.span3 input[type=text],
+.span3 input[type=password] {
+  width: 210px;
+  padding: 6px; }
+
+.btn-icon svg path {
+  fill: #EEF0F2; }
+</style>
+  <div class="partial-support-alert support-alert alert">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>Your Browser is not officially supported.</strong>
+    Consider upgrading to one of our <a href="https://browsehappy.com/">supported browsers</a>
+  </div>
+  <div class="unsupported-alert support-alert alert">
+    <strong>Your Browser is not supported.</strong>
+    Please upgrade to one of our <a href="https://browsehappy.com/">supported browsers</a>
+  </div>
+  <noscript>
+    <div class="no-js-alert support-alert alert">
+      <strong>JavaScript is required.</strong> Please turn on JavasScript and refresh the page
+    </div>
+  </noscript>
+
+  <div role="main" class="container" id="main_container">
+    <div id="page-header" class="page-header ng-scope" ng-controller="Controllers.pageHeader">
+      <div>
+        <div id="logo"><a ng-href="#!/dashboard" href="https://digizag.hasoffers.com/publisher/#!/dashboard"> <img network-logo="" style="display: none;"></a></div>
+        <!-- ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><div ng-if="!hasFeatures(&#39;PREMIUM_PARTNER_INSTANCE&#39;)" id="searchbar" class="ng-scope">
+          <form ng-submit="submitQuicksearch(this)" class="ng-pristine ng-valid">
+            <button><i title="search" txl-icon="Search"><!-- ngInclude: 'img/txl/Search.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/Search.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>Search</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Search" fill="#707D91" fill-rule="nonzero">
+            <path d="M12.7714809,12.0164624 C15.3292985,9.05788301 15.0858491,4.60687644 12.2205949,1.94456623 C9.35534072,-0.717743981 4.89581301,-0.636605908 2.12941682,2.12816835 C-0.636979368,4.89294261 -0.71816504,9.3498557 1.94570699,12.21343 C4.60957903,15.0770043 9.06319675,15.320311 12.0235118,12.763993 L16.3018954,17 L17,17 L17,16.3023047 L12.7714809,12.0164624 Z M1.04332429,7.28210167 C1.04332429,3.8416869 3.83396767,1.05267967 7.27640074,1.05267967 C10.7188338,1.05267967 13.5094772,3.8416869 13.5094772,7.28210167 C13.5094772,10.7225164 10.7188338,13.5115237 7.27640074,13.5115237 C3.83624472,13.5060358 1.04881537,10.7202407 1.04332429,7.28210167 L1.04332429,7.28210167 Z" id="Mask"></path>
+        </g>
+    </g>
+</svg></span></i></button>
+            <input ng-model="quicksearch" type="search" placeholder="" class="ng-pristine ng-untouched ng-valid">
+          </form>
+        </div><!-- end ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') -->
+        <div id="auth-logout"><a ng-click="logOut()">Logout</a></div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- ngInclude: 'partials/sidebar.html' --><div id="sidebar" class="sidebar ng-scope" ng-include="&#39;partials/sidebar.html&#39;" ng-controller="Controllers.sidebar" ng-show="loggedIn" ng-mouseleave="broadcastSidebarMouseleave()"><div class="sidebar-main ng-scope"><nav ng-class="{expanded: isMobile}"><!-- ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><div ng-if="!hasFeatures(&#39;PREMIUM_PARTNER_INSTANCE&#39;)" class="sidebar-main-group ng-scope active" ui-route="/dashboard" ng-class="{active: $uiRoute}"><a class="sidebar-main-group-header" href="https://digizag.hasoffers.com/publisher/#!/dashboard"><i title="Dashboard" txl-icon="HomeOutline"><!-- ngInclude: 'img/txl/HomeOutline.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/HomeOutline.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>HomeOutline</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HomeOutline" fill="#707D91" fill-rule="nonzero">
+            <path d="M8.5,1.5 L16,8 L13,8 L13,16 L10,16 L10,11 L7,11 L7,16 L4,16 L4,8 L1,8 L8.5,1.5 L8.5,1.5 Z M8.5,0 L0,7.5 L0,9 L3,9 L3,17 L8,17 L8,12 L9,12 L9,17 L14,17 L14,9 L17,9 L17,7.5 L8.5,0 Z" id="Mask"></path>
+        </g>
+    </g>
+</svg></span></i> <span class="sidebar-main-group--dashboard">Dashboard</span></a></div><!-- end ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><!-- ngRepeat: tab in tabs | filter: { tab: '!account'} --><div ng-repeat="tab in tabs | filter: { tab: &#39;!account&#39;}" class="sidebar-main-group ng-scope" ng-class="{&#39;current&#39;: tab.isCurrent = $uiRoute}" ng-hide="tab.enabled == false" ui-route="(/offers|/offers/my|/tuneNetwork/offers|/scheduled/changes)"><a class="sidebar-main-group-header" ng-mouseenter="!isMobile &amp;&amp; toggleTab(tab, {&#39;tabState&#39;: &#39;open&#39;, &#39;event&#39;: $event})" ng-mouseleave="!isMobile &amp;&amp; cancelTabTimeout(tab)" ng-click="!isMobile &amp;&amp; toggleTab(tab, {&#39;uiRoute&#39;: $uiRoute})"><!-- uiIf: tab.icon --><i ui-if="tab.icon" title="Offers" txl-icon="Offers" class="ng-scope"><!-- ngInclude: 'img/txl/Offers.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/Offers.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>Offers</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Offers" fill="#707D91">
+            <path d="M0,0 L0,11.769 L2.615,11.769 L3.021,11.763 L3.042,17 L8.5,11.769 L17,11.769 L17,0 L0,0 Z M1,1 L16,1 L16,10.769 L8.5,10.769 L8.098,10.769 L7.807,11.048 L4.032,14.666 L4.021,11.758 L4.018,10.746 L3.005,10.763 L2.615,10.769 L1,10.769 L1,1 Z" id="Mask"></path>
+        </g>
+    </g>
+</svg></span></i> <span class="ng-binding">Offers</span> <!-- ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --><i ng-if="(tab.isClosed || !$uiRoute) &amp;&amp; !(tab.isOpen || ($uiRoute &amp;&amp; !tab.isClosed))" txl-icon="ArrowDownSm" class="dropdown-toggle ng-scope"><!-- ngInclude: 'img/txl/ArrowDownSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/ArrowDownSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>ArrowDownSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ArrowDownSm" fill="#707D91">
+            <polygon id="Mask" points="14.293 5 8.5 10.793 2.707 5 2 5.707 8.5 12.207 15 5.707"></polygon>
+        </g>
+    </g>
+</svg></span></i><!-- end ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --> <!-- ngIf: tab.isOpen || ($uiRoute && !tab.isClosed) --></a><!-- uiIf: tab.usetab --><ul ui-if="tab.usetab" ng-class="{&#39;open&#39;: tab.isOpen, &#39;closed&#39;: tab.isClosed}" class="ng-scope closed"><!-- ngRepeat: link in links[tab.tab].top --><!-- ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/offers" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/offers" class="ng-binding">All Offers</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/offers/my" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/offers/my" class="ng-binding">My Live Offers</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tuneNetwork/offers" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope ng-hide"><a href="https://digizag.hasoffers.com/publisher/#!/tuneNetwork/offers" class="ng-binding">Offers</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/scheduled/changes" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/scheduled/changes" class="ng-binding">Scheduled Changes</a></li><!-- end ngRepeat: link in links[tab.tab].def --><!-- ngRepeat: link in links[tab.tab].bottom --></ul><!-- uiIf: !tab.usetab --></div><!-- end ngRepeat: tab in tabs | filter: { tab: '!account'} --><div ng-repeat="tab in tabs | filter: { tab: &#39;!account&#39;}" class="sidebar-main-group ng-scope" ng-class="{&#39;current&#39;: tab.isCurrent = $uiRoute}" ng-hide="tab.enabled == false" ui-route="(/performance|/performance(.*)|/conversion|/conversion(.*)|/referral|/savedReport(.*)|/network-conversion-report|/network-brand-report)"><a class="sidebar-main-group-header" ng-mouseenter="!isMobile &amp;&amp; toggleTab(tab, {&#39;tabState&#39;: &#39;open&#39;, &#39;event&#39;: $event})" ng-mouseleave="!isMobile &amp;&amp; cancelTabTimeout(tab)" ng-click="!isMobile &amp;&amp; toggleTab(tab, {&#39;uiRoute&#39;: $uiRoute})"><!-- uiIf: tab.icon --><i ui-if="tab.icon" title="Reports" txl-icon="GraphBar" class="ng-scope"><!-- ngInclude: 'img/txl/GraphBar.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/GraphBar.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>GraphBar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="GraphBar" fill="#707D91">
+            <path d="M0,-0.0001 L1,-0.0001 L1,15.9999 L17,15.9999 L17,16.9999 L0.285,16.9999 L0,16.9999 L0,15.1169 L0,-0.0001 Z M3,14 L3,5 L9,5 L9,14 L3,14 Z M11,14 L11,2.48689551e-14 L17,2.48689551e-14 L17,14 L11,14 Z" id="Mask"></path>
+        </g>
+    </g>
+</svg></span></i> <span class="ng-binding">Reports</span> <!-- ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --><i ng-if="(tab.isClosed || !$uiRoute) &amp;&amp; !(tab.isOpen || ($uiRoute &amp;&amp; !tab.isClosed))" txl-icon="ArrowDownSm" class="dropdown-toggle ng-scope"><!-- ngInclude: 'img/txl/ArrowDownSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/ArrowDownSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>ArrowDownSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ArrowDownSm" fill="#707D91">
+            <polygon id="Mask" points="14.293 5 8.5 10.793 2.707 5 2 5.707 8.5 12.207 15 5.707"></polygon>
+        </g>
+    </g>
+</svg></span></i><!-- end ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --> <!-- ngIf: tab.isOpen || ($uiRoute && !tab.isClosed) --></a><!-- uiIf: tab.usetab --><ul ui-if="tab.usetab" ng-class="{&#39;open&#39;: tab.isOpen, &#39;closed&#39;: tab.isClosed}" class="ng-scope closed"><!-- ngRepeat: link in links[tab.tab].top --><!-- ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/performance(.*)" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/performance" class="ng-binding">Performance Report</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/conversion(.*)" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/conversion" class="ng-binding">Conversion Report</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/network-conversion-report" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope ng-hide"><a href="https://digizag.hasoffers.com/publisher/#!/network-conversion-report" class="ng-binding">Conversion Report</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/referral" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope ng-hide"><a href="https://digizag.hasoffers.com/publisher/#!/referral" class="ng-binding">Referral Report</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/savedReport(.*)" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/savedReports" class="ng-binding">Saved Reports</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/network-brand-report" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope ng-hide"><a href="https://digizag.hasoffers.com/publisher/#!/network-brand-report" class="ng-binding">Brand Report</a></li><!-- end ngRepeat: link in links[tab.tab].def --><!-- ngRepeat: link in links[tab.tab].bottom --></ul><!-- uiIf: !tab.usetab --></div><!-- end ngRepeat: tab in tabs | filter: { tab: '!account'} --><div ng-repeat="tab in tabs | filter: { tab: &#39;!account&#39;}" class="sidebar-main-group ng-scope" ng-class="{&#39;current&#39;: tab.isCurrent = $uiRoute}" ng-hide="tab.enabled == false" ui-route="(/tools/adgroups|/tools/pixels|/tools/api-key)"><a class="sidebar-main-group-header" ng-click="!isMobile &amp;&amp; toggleTab(tab, {&#39;uiRoute&#39;: $uiRoute})" ng-mouseleave="!isMobile &amp;&amp; cancelTabTimeout(tab)"><!-- uiIf: tab.icon --><i ui-if="tab.icon" title="Tools" txl-icon="BuildingOutline" class="ng-scope"><!-- ngInclude: 'img/txl/BuildingOutline.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/BuildingOutline.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>BuildingOutline</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BuildingOutline" fill="#707D91" fill-rule="nonzero">
+            <path d="M16,1 L16,17 L17,17 L17,0 L0,0 L0,17 L1,17 L1,1 L16,1 L16,1 Z M14,8 L10,8 L10,4 L11,4 L11,7 L14,7 L14,8 Z M10,10 L10,14 L14,14 L14,13 L11,13 L11,10 L10,10 Z M8,8 L4,8 L4,4 L5,4 L5,7 L8,7 L8,8 Z M4,10 L4,14 L8,14 L8,13 L5,13 L5,10 L4,10 Z" id="Mask"></path>
+        </g>
+    </g>
+</svg></span></i> <span class="ng-binding">Tools</span> <!-- ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --><i ng-if="(tab.isClosed || !$uiRoute) &amp;&amp; !(tab.isOpen || ($uiRoute &amp;&amp; !tab.isClosed))" txl-icon="ArrowDownSm" class="dropdown-toggle ng-scope"><!-- ngInclude: 'img/txl/ArrowDownSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/ArrowDownSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>ArrowDownSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ArrowDownSm" fill="#707D91">
+            <polygon id="Mask" points="14.293 5 8.5 10.793 2.707 5 2 5.707 8.5 12.207 15 5.707"></polygon>
+        </g>
+    </g>
+</svg></span></i><!-- end ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --> <!-- ngIf: tab.isOpen || ($uiRoute && !tab.isClosed) --></a><!-- uiIf: tab.usetab --><ul ui-if="tab.usetab" ng-class="" class="closed"><!-- ngRepeat: link in links[tab.tab].top --><!-- ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tools/adgroups" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/tools/adgroups" class="ng-binding">Ad Groups</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tools/mobileapp" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/tools/mobileapp" class="ng-binding">Mobile App</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tools/api-key" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/tools/api-key" class="ng-binding">APIs</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tools/pixels" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/tools/pixels" class="ng-binding">Pixels/Postbacks</a></li><!-- end ngRepeat: link in links[tab.tab].def --><!-- ngRepeat: link in links[tab.tab].bottom --></ul><!-- uiIf: !tab.usetab --></div><!-- end ngRepeat: tab in tabs | filter: { tab: '!account'} --><div ng-repeat="tab in tabs | filter: { tab: &#39;!account&#39;}" class="sidebar-main-group ng-scope ng-hide" ng-class="{&#39;current&#39;: tab.isCurrent = $uiRoute}" ng-hide="tab.enabled == false" ui-route="(/tune_network)"><a class="sidebar-main-group-header" ng-mouseenter="!isMobile &amp;&amp; toggleTab(tab, {&#39;tabState&#39;: &#39;open&#39;, &#39;event&#39;: $event})" ng-mouseleave="!isMobile &amp;&amp; cancelTabTimeout(tab)" ng-click="!isMobile &amp;&amp; toggleTab(tab, {&#39;uiRoute&#39;: $uiRoute})"><!-- uiIf: tab.icon --><i ui-if="tab.icon" title="TUNE Network" txl-icon="TuneNetwork" class="ng-scope"><!-- ngInclude: 'img/txl/TuneNetwork.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/TuneNetwork.svg&#39;"><svg id="tuneNetworkIcon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 704.31 461.93">
+	<circle cx="78.11" cy="383.82" r="78.11" transform="translate(-3.04 0.63) rotate(-0.45)"></circle>
+	<circle cx="383.75" cy="78.11" r="78.11" transform="translate(284.53 456.95) rotate(-86.83)"></circle>
+	<circle cx="626.19" cy="297.35" r="78.11"></circle>
+	<rect x="50.72" y="214.41" width="391.53" height="19.29" transform="translate(-86.25 239.69) rotate(-44.96)"></rect>
+	<rect x="480.18" y="-14.14" width="19.29" height="391.53" transform="translate(37.59 443.16) rotate(-50.39)"></rect>
+</svg></span></i> <span class="ng-binding">TUNE Network</span> <!-- ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --><i ng-if="(tab.isClosed || !$uiRoute) &amp;&amp; !(tab.isOpen || ($uiRoute &amp;&amp; !tab.isClosed))" txl-icon="ArrowDownSm" class="dropdown-toggle ng-scope"><!-- ngInclude: 'img/txl/ArrowDownSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/ArrowDownSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>ArrowDownSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ArrowDownSm" fill="#707D91">
+            <polygon id="Mask" points="14.293 5 8.5 10.793 2.707 5 2 5.707 8.5 12.207 15 5.707"></polygon>
+        </g>
+    </g>
+</svg></span></i><!-- end ngIf: (tab.isClosed || !$uiRoute) && !(tab.isOpen || ($uiRoute && !tab.isClosed)) --> <!-- ngIf: tab.isOpen || ($uiRoute && !tab.isClosed) --></a><!-- uiIf: tab.usetab --><ul ui-if="tab.usetab" ng-class="{&#39;open&#39;: tab.isOpen, &#39;closed&#39;: tab.isClosed}" class="ng-scope closed"><!-- ngRepeat: link in links[tab.tab].top --><!-- ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tune_network" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><a href="https://digizag.hasoffers.com/publisher/#!/tune_network" class="ng-binding">Brand Directory</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tune_network/manage_profile" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope ng-hide"><a href="https://digizag.hasoffers.com/publisher/#!/tune_network/manage_profile" class="ng-binding">Manage Profile</a></li><!-- end ngRepeat: link in links[tab.tab].def --><li ng-repeat="link in links[tab.tab].def" ui-route="/tune_network/connection_request" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope ng-hide"><a href="https://digizag.hasoffers.com/publisher/#!/tune_network/connection_request" class="ng-binding">Connection Requests</a></li><!-- end ngRepeat: link in links[tab.tab].def --><!-- ngRepeat: link in links[tab.tab].bottom --></ul><!-- uiIf: !tab.usetab --></div><!-- end ngRepeat: tab in tabs | filter: { tab: '!account'} --><div class="sidebar-main-group ng-scope closed" ng-class="{&#39;current&#39;: tabs[0].isCurrent = $uiRoute, &#39;open&#39;: tabs[0].isOpen, &#39;closed&#39;: tabs[0].isClosed}" ng-hide="tabs[0].enabled == false" ui-route="/account(.*)|/invoice(.*)|/billing(.*)|/receipt(.*)"><a class="sidebar-main-group-header" ng-mouseenter="!isMobile &amp;&amp; toggleTab(tabs[0], {&#39;tabState&#39;: &#39;open&#39;, &#39;event&#39;: $event})" ng-mouseleave="cancelTabTimeout(tabs[0])" ng-click="toggleTab(tabs[0], {&#39;uiRoute&#39;: $uiRoute})"><i title="sidebar.tabs.account" txl-icon="AccountOutline"><!-- ngInclude: 'img/txl/AccountOutline.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/AccountOutline.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>AccountOutline</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AccountOutline" fill="#707D91">
+            <path d="M13.1170769,9.80638462 C11.829,11.0199231 10.0976154,11.7692308 8.19230769,11.7692308 C6.287,11.7692308 4.55692308,11.0199231 3.26884615,9.80638462 C1.87484615,11.118 1,12.9736154 1,15.0384615 C1,15.7197692 1.102,17 1.27853846,17 L15.1060769,17 C15.2839231,17 15.3846154,15.7197692 15.3846154,15.0384615 C15.3846154,12.9736154 14.5097692,11.118 13.1170769,9.80638462 M12.9653846,11.6018462 C13.6885385,12.5956923 14.0769231,13.7843846 14.0769231,15.0384615 C14.0769231,15.2555385 14.0651538,15.6923077 14.039,15.6923077 L2.34692308,15.6923077 C2.32076923,15.6923077 2.30769231,15.2555385 2.30769231,15.0384615 C2.30769231,13.7843846 2.69738462,12.5956923 3.42053846,11.6018462 C4.82369231,12.5603846 6.47792308,13.0769231 8.19230769,13.0769231 C9.908,13.0769231 11.5622308,12.5603846 12.9653846,11.6018462 M8.19230769,0 C5.66584615,0 3.61538462,2.04915385 3.61538462,4.57692308 C3.61538462,6.13830769 4.4,7.51269231 5.59261538,8.33915385 C6.33276923,8.85046154 7.22592308,9.15384615 8.19230769,9.15384615 C9.16,9.15384615 10.0531538,8.85046154 10.7933077,8.33915385 C11.9859231,7.51269231 12.7692308,6.13830769 12.7692308,4.57692308 C12.7692308,2.04915385 10.7200769,0 8.19230769,0 M8.19230769,1.30769231 C9.99561538,1.30769231 11.4615385,2.77492308 11.4615385,4.57692308 C11.4615385,5.64661538 10.9332308,6.65092308 10.0479231,7.26423077 C9.49738462,7.64476923 8.85530769,7.84615385 8.19230769,7.84615385 C7.53061538,7.84615385 6.88723077,7.64476923 6.33669231,7.26423077 C5.45269231,6.65092308 4.92307692,5.64661538 4.92307692,4.57692308 C4.92307692,2.77492308 6.389,1.30769231 8.19230769,1.30769231" id="Mask"></path>
+        </g>
+    </g>
+</svg></span></i> <span class="ng-binding">My Account</span> <!-- ngIf: (tabs[0].isClosed || !$uiRoute) && !(tabs[0].isOpen || ($uiRoute && !tabs[0].isClosed)) --><i ng-if="(tabs[0].isClosed || !$uiRoute) &amp;&amp; !(tabs[0].isOpen || ($uiRoute &amp;&amp; !tabs[0].isClosed))" txl-icon="ArrowDownSm" class="dropdown-toggle ng-scope"><!-- ngInclude: 'img/txl/ArrowDownSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/ArrowDownSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>ArrowDownSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon-Export" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ArrowDownSm" fill="#707D91">
+            <polygon id="Mask" points="14.293 5 8.5 10.793 2.707 5 2 5.707 8.5 12.207 15 5.707"></polygon>
+        </g>
+    </g>
+</svg></span></i><!-- end ngIf: (tabs[0].isClosed || !$uiRoute) && !(tabs[0].isOpen || ($uiRoute && !tabs[0].isClosed)) --> <!-- ngIf: tabs[0].isOpen || ($uiRoute && !tabs[0].isClosed) --></a><ul ng-class="{&#39;open&#39;: tabs[0].isOpen, &#39;closed&#39;: tabs[0].isClosed}" class="closed"><!-- ngRepeat: link in links.account.top --><!-- ngRepeat: link in links.account.def --><li ng-repeat="link in links.account.def" ui-route="/account(.*)" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><!-- uiIf: !!link.click --> <!-- uiIf: !link.click --><a ui-if="!link.click" href="https://digizag.hasoffers.com/publisher/#!/account" class="ng-binding ng-scope">Account Details</a></li><!-- end ngRepeat: link in links.account.def --><li ng-repeat="link in links.account.def" ui-route="/(invoice(.*)|billing(.*)|receipt(.*))" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><!-- uiIf: !!link.click --> <!-- uiIf: !link.click --><a ui-if="!link.click" href="https://digizag.hasoffers.com/publisher/#!/billing" class="ng-binding ng-scope">Billing</a></li><!-- end ngRepeat: link in links.account.def --><li ng-repeat="link in links.account.def" ui-route="/" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope ng-hide"><!-- uiIf: !!link.click --><a ui-if="!!link.click" ng-click="this[link.click]()" class="ng-binding ng-scope">Payments</a> <!-- uiIf: !link.click --></li><!-- end ngRepeat: link in links.account.def --><li ng-repeat="link in links.account.def" ui-route="/settings" ng-class="{active: $uiRoute}" ng-hide="link.enabled == false" class="ng-scope"><!-- uiIf: !!link.click --> <!-- uiIf: !link.click --><a ui-if="!link.click" href="https://digizag.hasoffers.com/publisher/#!/settings" class="ng-binding ng-scope">Settings</a></li><!-- end ngRepeat: link in links.account.def --><!-- ngIf: hasFeatures('PREMIUM_PARTNER_INSTANCE') --><!-- ngRepeat: link in links.account.bottom --><li><a href="mailto:info@digizag.com">Contact Support</a></li><li class="logout"><a ng-click="logOut()">Logout</a></li></ul></div></nav><div class="sidebar-main-group--search"><h2>Search Offers</h2><form ng-submit="submitQuicksearch(this)" class="compact-form ng-pristine ng-valid"><div class="compact-form-input"><input ng-model="quicksearch" type="search" placeholder="" class="ng-pristine ng-untouched ng-valid"></div><div class="compact-form-button"><button class="btn btn-icon"><i title="search" class="icon-search"></i></button></div></form></div><!-- ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><div class="sidebar-main-group--manager ng-scope" ng-if="!hasFeatures(&#39;PREMIUM_PARTNER_INSTANCE&#39;)"><h2>Account Manager:</h2><!-- uiIf: Manager.photo --><!-- uiIf: !Manager.photo --><h3 ui-if="!Manager.photo" class="ng-binding ng-scope">Heba Odetallah</h3><!-- uiIf: !Manager.photo --><div ui-if="!Manager.photo" ng-show="Manager.title" class="ng-binding ng-scope">Operations Manager</div><ul><li ng-show="Manager.phone" class="ng-hide"><i title="office" class="icon-phone"></i><span class="ng-binding"></span></li><li ng-show="Manager.cell_phone" class=""><i title="cell" class="icon-mobile-phone"></i><span class="ng-binding">+962-79-8308191 </span></li><li ng-show="Manager.aim" class=""><i title="chat" class="icon-comments"></i><span class="ng-binding">digizag_company</span></li><li ng-show="Manager.email" class=""><i title="email" class="icon-envelope-alt"></i><a href="mailto:heba@digizag.com" class="ng-binding">heba@digizag.com</a></li></ul></div><!-- end ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><ul class="sidebar-main-group--small"><!-- ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><li ng-if="!hasFeatures(&#39;PREMIUM_PARTNER_INSTANCE&#39;)" class="ng-scope"><a ui-route="/terms" ng-class="{on: $uiRoute}" href="https://digizag.hasoffers.com/publisher/#!/terms" class="ng-scope">Terms of Service</a></li><!-- end ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><li ng-show="hasFeatures(&#39;PARTNER_TERMS&#39;)" class="ng-hide"><a href="http://tune.com/partner-terms">Partner Terms</a></li><!-- ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><li ng-if="!hasFeatures(&#39;PREMIUM_PARTNER_INSTANCE&#39;)" class="ng-scope"><a ui-route="/privacy_policy" ng-class="{on: $uiRoute}" href="https://digizag.hasoffers.com/publisher/#!/privacy_policy" class="ng-scope">Privacy Policy</a></li><!-- end ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') --><li><a href="mailto:info@digizag.com">Contact Support</a></li></ul></div></div>
+      <div id="globalLoadingIndicator" class="globalLoadingIndicator ng-hide" ng-show="loadingCount &gt; 0">
+        <img src="./DigiZag - Summary Report_files/page-loader.gif">
+      </div>
+
+      <div id="flashError" ng-show="flashErrorMessage.visible" class="alert alert-error ng-binding ng-hide">
+        
+        <a class="close" ng-click="flashErrorMessage.visible = false">×</a>
+      </div>
+      <div id="flashSuccess" ng-show="flashSuccessMessage.visible" class="alert alert-success ng-binding ng-hide">
+        
+        <a class="close" ng-click="flashSuccessMessage.visible = false">×</a>
+      </div>
+      <!-- ngView:  --><div id="content" ng-view="" ng-show="themeLoaded" class="ng-scope"><div class="ng-scope"><!-- ngInclude: 'partials/mobile-header.html' --><section ng-include="&#39;partials/mobile-header.html&#39;" class="ng-scope"><header class="mobile ng-scope"><div class="bar"><div><div id="logo"><a ng-href="#!/dashboard" href="https://digizag.hasoffers.com/publisher/#!/dashboard"><img network-logo="" style="display: none;"></a></div><a class="btn show-menu" ng-click="toggleSidebar()"><i class="icon-align-justify"></i></a></div></div><div class="title clearfix"><h1 class="ng-binding">Summary Report</h1></div></header></section><header><h1>Dashboard</h1></header><!-- ngInclude: 'js/application/dashboard/partials/w9WarningWidget.html' --><div ng-include="&#39;js/application/dashboard/partials/w9WarningWidget.html&#39;" ng-controller="Controllers.Widgets.w9Warning" class="ng-scope"><div class="row-fluid ng-scope ng-hide" ng-show="showWarning"><div class="module span12 dashboardWarningPanel alert ng-binding" ng-class="{fadeUp: hideWarning}"><button type="button" class="close" ng-click="dismissW9Warning()">x</button> You have not yet filed a W9 form<ul><li ng-show="brandPrefs.custom_w9_url" class="ng-hide">In the US? <a ng-href="" target="_blank">Fill out form W-9</a></li><li ng-show="brandPrefs.custom_w8_url" class="ng-hide">Outside of the US? <a ng-href="" target="_blank">Fill out form W-8BEN</a></li></ul></div></div></div><!-- ngInclude: 'js/application/dashboard/partials/tunePaySetupWidget.html' --><div ng-include="&#39;js/application/dashboard/partials/tunePaySetupWidget.html&#39;" ng-controller="Controllers.Widgets.tunePaySetup" class="ng-scope"><div class="row-fluid ng-scope"><div class="module span12 dashboardWarningPanel alert alert-info alert-container ng-hide" ng-show="showWarningTax"><div><b>Let's setup your tax documentation</b></div><div>For us to process your payments we need the following tax information filed with TUNE to enable payments for your account. You can find the appropriate forms for your location below:</div><div class="alert-tunepay">Business or Individual and a US Resident: <a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank">W-9, Request for Taxpayer identification Number and Certification</a><br>Individual and a Non-US Resident: <a href="https://www.irs.gov/pub/irs-pdf/fw8ben.pdf" target="_blank">W-8BEN, Certificate of Foreign Status of Benificial Owner for United States Tax Witholding and Reporting (Individuals)</a><br>Business and a Non-US Resident: <a href="https://www.irs.gov/pub/irs-pdf/fw8bene.pdf" target="_blank">W-8BEN-E, Certificate of Foreign Status of Benificial Owner for United States Tax Witholding and Reporting (Entities)</a></div><div ng-click="redirectToTunePay()"><b class="alert-link">Complete Tax Registration</b></div></div><div class="module span12 dashboardWarningPanel alert alert-info alert-container ng-hide" ng-show="showWarningPayment"><div><b>Let's setup a payment method</b></div><div>Before we can submit an invoice regarding your conversions, we need a payment method setup.</div><div ng-click="redirectToTunePay()"><b class="alert-link">Add Payment Method</b></div></div></div></div><div class="row-fluid"><!-- ngInclude: 'js/application/dashboard/partials/quickStatsWidget.html' --><div class="module span12 ng-scope" ng-include="&#39;js/application/dashboard/partials/quickStatsWidget.html&#39;" ng-controller="Controllers.Widgets.quickStats"><div class="quickstats on quickstats5 ng-scope" ng-show="quickStatsLoaded"><h2><span class="text">Quick Stats: Last 7 Days</span></h2><div><h3>Impressions</h3><p><span class="ng-binding" style="font-size: 27px;">0</span></p><sparkline items="impressions.data" class="ng-isolate-scope" style="display: none;"><div class="sparkline"><div class="status">LOADING</div><div class="textlabel"></div><div class="chart" data-highcharts-chart="0" style="display: none;"><div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="400"><desc>Created with Highcharts 3.0.7</desc><defs><clippath id="highcharts-1"><rect fill="none" x="0" y="0" width="600" height="400"></rect></clippath></defs><rect rx="5" ry="5" fill="transparent" x="0" y="0" width="600" height="400"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="url(#highcharts-1)"><path fill="#e9e9e9" d="M 0 0" zIndex="0"></path><path fill="none" d="M 0 0" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="21.3" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="none" style=""></g></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g></svg></div></div></div></sparkline><div class="prev-performance ng-hide" ng-show="impressions.difference"><span ng-class="impressions.direction" class="with-tooltip ng-binding no-change" data-toggle="tooltip" title="" data-original-title="compared to previous 7 days"></span></div></div><div><h3>Clicks</h3><p><span class="ng-binding" style="font-size: 27px;">0</span></p><sparkline items="clicks.data" class="ng-isolate-scope" style="display: none;"><div class="sparkline"><div class="status">LOADING</div><div class="textlabel"></div><div class="chart" data-highcharts-chart="1" style="display: none;"><div class="highcharts-container" id="highcharts-4" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="400"><desc>Created with Highcharts 3.0.7</desc><defs><clippath id="highcharts-5"><rect fill="none" x="0" y="0" width="600" height="400"></rect></clippath></defs><rect rx="5" ry="5" fill="transparent" x="0" y="0" width="600" height="400"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="url(#highcharts-5)"><path fill="#e9e9e9" d="M 0 0" zIndex="0"></path><path fill="none" d="M 0 0" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="21.3" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="none" style=""></g></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g></svg></div></div></div></sparkline><div class="prev-performance ng-hide" ng-show="clicks.difference"><span ng-class="clicks.direction" class="with-tooltip ng-binding no-change" data-toggle="tooltip" title="" data-original-title="compared to previous 7 days"></span></div></div><div><h3>Conversions</h3><p><span class="ng-binding" style="font-size: 27px;">0</span></p><sparkline items="conversions.data" class="ng-isolate-scope" style="display: none;"><div class="sparkline"><div class="status">LOADING</div><div class="textlabel"></div><div class="chart" data-highcharts-chart="2" style="display: none;"><div class="highcharts-container" id="highcharts-8" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="400"><desc>Created with Highcharts 3.0.7</desc><defs><clippath id="highcharts-9"><rect fill="none" x="0" y="0" width="600" height="400"></rect></clippath></defs><rect rx="5" ry="5" fill="transparent" x="0" y="0" width="600" height="400"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="url(#highcharts-9)"><path fill="#e9e9e9" d="M 0 0" zIndex="0"></path><path fill="none" d="M 0 0" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="21.3" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="none" style=""></g></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g></svg></div></div></div></sparkline><div class="prev-performance ng-hide" ng-show="conversions.difference"><span ng-class="conversions.direction" class="with-tooltip ng-binding no-change" data-toggle="tooltip" title="" data-original-title="compared to previous 7 days"></span></div></div><div><h3>Payout</h3><p><span class="ng-binding" style="font-size: 27px;">$&nbsp;0.00</span></p><sparkline items="payout.data" class="ng-isolate-scope" style="display: none;"><div class="sparkline"><div class="status">LOADING</div><div class="textlabel"></div><div class="chart" data-highcharts-chart="3" style="display: none;"><div class="highcharts-container" id="highcharts-12" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="400"><desc>Created with Highcharts 3.0.7</desc><defs><clippath id="highcharts-13"><rect fill="none" x="0" y="0" width="600" height="400"></rect></clippath></defs><rect rx="5" ry="5" fill="transparent" x="0" y="0" width="600" height="400"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="url(#highcharts-13)"><path fill="#e9e9e9" d="M 0 0" zIndex="0"></path><path fill="none" d="M 0 0" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="21.3" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="none" style=""></g></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g></svg></div></div></div></sparkline><div class="prev-performance ng-hide" ng-show="payout.difference"><span ng-class="payout.direction" class="with-tooltip ng-binding no-change" data-toggle="tooltip" title="" data-original-title="compared to previous 7 days"></span></div></div><div><h3 class="ng-binding">Payout&nbsp;(2024&nbsp;ytd)</h3><p><span class="ng-binding" style="font-size: 27px;">$&nbsp;0.00</span></p><sparkline items="payoutytd.data" class="ng-isolate-scope" style="display: none;"><div class="sparkline"><div class="status">LOADING</div><div class="textlabel"></div><div class="chart" data-highcharts-chart="4" style="display: none;"><div class="highcharts-container" id="highcharts-16" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="400"><desc>Created with Highcharts 3.0.7</desc><defs><clippath id="highcharts-17"><rect fill="none" x="0" y="0" width="600" height="400"></rect></clippath></defs><rect rx="5" ry="5" fill="transparent" x="0" y="0" width="600" height="400"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="url(#highcharts-17)"><path fill="#e9e9e9" d="M 0 0" zIndex="0"></path><path fill="none" d="M 0 0" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="21.3" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="none" style=""></g></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g></svg></div></div></div></sparkline><div class="prev-performance ng-hide" ng-show="payoutytd.difference"><span ng-class="payoutytd.direction" class="with-tooltip ng-binding no-change" data-toggle="tooltip" title="" data-original-title="compared to previous YTD"></span></div></div></div><div class="quickstats loading ng-scope ng-hide" ng-show="quickStatsLoaded==false"><i class="loading-icon"></i> Loading</div></div></div><div class="row-fluid"><!-- ngIf: showPendingConversions --><!-- ngInclude: 'js/application/dashboard/partials/pendingConversionsWidget.html' --><div id="pendingConversionsWidget" class="module span8 ng-scope" ng-if="showPendingConversions" ng-include="&#39;js/application/dashboard/partials/pendingConversionsWidget.html&#39;" ng-controller="Controllers.Widgets.pendingConversions"><div class="quickstats on quickstats5 ng-scope" ng-show="pendingConversionsLoaded"><h2><span class="text">Pending Conversions: Last 90 Days</span></h2><div><h3>Pending Conversions</h3><p><span class="ng-binding" style="font-size: 27px;">0</span></p><sparkline items="pendingConversionsData.count.items" class="ng-isolate-scope" style="display: none;"><div class="sparkline"><div class="status">LOADING</div><div class="textlabel"></div><div class="chart" data-highcharts-chart="5" style="display: none;"><div class="highcharts-container" id="highcharts-20" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="400"><desc>Created with Highcharts 3.0.7</desc><defs><clippath id="highcharts-21"><rect fill="none" x="0" y="0" width="600" height="400"></rect></clippath></defs><rect rx="5" ry="5" fill="transparent" x="0" y="0" width="600" height="400"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="url(#highcharts-21)"><path fill="#e9e9e9" d="M 0 0" zIndex="0"></path><path fill="none" d="M 0 0" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="21.3" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="none" style=""></g></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g></svg></div></div></div></sparkline></div><div><h3>Pending Payout</h3><p><span class="ng-binding" style="font-size: 27px;">$&nbsp;0.00</span></p><sparkline items="pendingConversionsData.payout.items" class="ng-isolate-scope" style="display: none;"><div class="sparkline"><div class="status">LOADING</div><div class="textlabel"></div><div class="chart" data-highcharts-chart="6" style="display: none;"><div class="highcharts-container" id="highcharts-24" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="600" height="400"><desc>Created with Highcharts 3.0.7</desc><defs><clippath id="highcharts-25"><rect fill="none" x="0" y="0" width="600" height="400"></rect></clippath></defs><rect rx="5" ry="5" fill="transparent" x="0" y="0" width="600" height="400"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="url(#highcharts-25)"><path fill="#e9e9e9" d="M 0 0" zIndex="0"></path><path fill="none" d="M 0 0" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="21.3" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(0,0) scale(1 1)" clip-path="none" style=""></g></g><g class="highcharts-axis-labels" zIndex="7"></g><g class="highcharts-axis-labels" zIndex="7"></g></svg></div></div></div></sparkline></div><div style="width: fit-content"><a href="https://digizag.hasoffers.com/publisher/#!/conversion" style="text-decoration: underline"><h3 style="padding: 0">View Conversion Report</h3></a></div></div><div class="quickstats loading ng-scope ng-hide" ng-show="!pendingConversionsLoaded"><i class="loading-icon"></i> Loading</div></div><!-- end ngIf: showPendingConversions --><!-- ngInclude: 'js/application/dashboard/partials/recentMessagesWidget.html' --><div id="recent-messages" ng-class="showPendingConversions ? &#39;module span4&#39; : &#39;module span12&#39;" ng-controller="Controllers.Widgets.recentMessages" ng-include="&#39;js/application/dashboard/partials/recentMessagesWidget.html&#39;" class="ng-scope module span4"><h2 class="ng-scope"><span class="text">Recent Notifications</span></h2><div class="loading ng-scope ng-hide" ng-show="messagesLoaded==false"><span></span></div><ul ng-show="messagesLoaded" class="ng-scope"><!-- ngRepeat: message in messages --><li ng-repeat="message in messages" class="ng-scope"><span class="message-date ng-binding">08/16</span><p><a href="https://digizag.hasoffers.com/publisher/#!/message/279175"><span ng-bind="message.title|ifEmpty:&#39;(No Title)&#39;|plainText" class="ng-binding">Offer Expiration Approaching</span></a></p><span class="remove-message"><a href="https://digizag.hasoffers.com/publisher/#" ng-click="removeMessage($event, message.id)"><i txl-icon="CloseSm"><!-- ngInclude: 'img/txl/CloseSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/CloseSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>CloseSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CloseSm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Mask" fill="#707D91" points="8.500339 7.88860639 5.64250108 4.99604174 5.03059896 5.60709635 7.88928439 8.50050851 5.03059896 11.3113901 5.64165357 11.9224447 8.500339 9.11071561 11.3556132 11.9224447 11.9666678 11.3113901 9.11139361 8.50050851 11.9658203 5.60709635 11.3556132 4.99604174"></polygon>
+    </g>
+</svg></span></i></a></span></li><!-- end ngRepeat: message in messages --><li ng-repeat="message in messages" class="ng-scope"><span class="message-date ng-binding">08/16</span><p><a href="https://digizag.hasoffers.com/publisher/#!/message/279173"><span ng-bind="message.title|ifEmpty:&#39;(No Title)&#39;|plainText" class="ng-binding">Offer Expiration Approaching</span></a></p><span class="remove-message"><a href="https://digizag.hasoffers.com/publisher/#" ng-click="removeMessage($event, message.id)"><i txl-icon="CloseSm"><!-- ngInclude: 'img/txl/CloseSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/CloseSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>CloseSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CloseSm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Mask" fill="#707D91" points="8.500339 7.88860639 5.64250108 4.99604174 5.03059896 5.60709635 7.88928439 8.50050851 5.03059896 11.3113901 5.64165357 11.9224447 8.500339 9.11071561 11.3556132 11.9224447 11.9666678 11.3113901 9.11139361 8.50050851 11.9658203 5.60709635 11.3556132 4.99604174"></polygon>
+    </g>
+</svg></span></i></a></span></li><!-- end ngRepeat: message in messages --><li ng-repeat="message in messages" class="ng-scope"><span class="message-date ng-binding">08/16</span><p><a href="https://digizag.hasoffers.com/publisher/#!/message/279171"><span ng-bind="message.title|ifEmpty:&#39;(No Title)&#39;|plainText" class="ng-binding">Offer Expiration Approaching</span></a></p><span class="remove-message"><a href="https://digizag.hasoffers.com/publisher/#" ng-click="removeMessage($event, message.id)"><i txl-icon="CloseSm"><!-- ngInclude: 'img/txl/CloseSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/CloseSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>CloseSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CloseSm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Mask" fill="#707D91" points="8.500339 7.88860639 5.64250108 4.99604174 5.03059896 5.60709635 7.88928439 8.50050851 5.03059896 11.3113901 5.64165357 11.9224447 8.500339 9.11071561 11.3556132 11.9224447 11.9666678 11.3113901 9.11139361 8.50050851 11.9658203 5.60709635 11.3556132 4.99604174"></polygon>
+    </g>
+</svg></span></i></a></span></li><!-- end ngRepeat: message in messages --><li ng-repeat="message in messages" class="ng-scope"><span class="message-date ng-binding">08/16</span><p><a href="https://digizag.hasoffers.com/publisher/#!/message/279170"><span ng-bind="message.title|ifEmpty:&#39;(No Title)&#39;|plainText" class="ng-binding">Offer Expiration Approaching</span></a></p><span class="remove-message"><a href="https://digizag.hasoffers.com/publisher/#" ng-click="removeMessage($event, message.id)"><i txl-icon="CloseSm"><!-- ngInclude: 'img/txl/CloseSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/CloseSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>CloseSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CloseSm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Mask" fill="#707D91" points="8.500339 7.88860639 5.64250108 4.99604174 5.03059896 5.60709635 7.88928439 8.50050851 5.03059896 11.3113901 5.64165357 11.9224447 8.500339 9.11071561 11.3556132 11.9224447 11.9666678 11.3113901 9.11139361 8.50050851 11.9658203 5.60709635 11.3556132 4.99604174"></polygon>
+    </g>
+</svg></span></i></a></span></li><!-- end ngRepeat: message in messages --><li ng-repeat="message in messages" class="ng-scope"><span class="message-date ng-binding">07/03</span><p><a href="https://digizag.hasoffers.com/publisher/#!/message/277499"><span ng-bind="message.title|ifEmpty:&#39;(No Title)&#39;|plainText" class="ng-binding">Approved for Offer</span></a></p><span class="remove-message"><a href="https://digizag.hasoffers.com/publisher/#" ng-click="removeMessage($event, message.id)"><i txl-icon="CloseSm"><!-- ngInclude: 'img/txl/CloseSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/CloseSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>CloseSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CloseSm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Mask" fill="#707D91" points="8.500339 7.88860639 5.64250108 4.99604174 5.03059896 5.60709635 7.88928439 8.50050851 5.03059896 11.3113901 5.64165357 11.9224447 8.500339 9.11071561 11.3556132 11.9224447 11.9666678 11.3113901 9.11139361 8.50050851 11.9658203 5.60709635 11.3556132 4.99604174"></polygon>
+    </g>
+</svg></span></i></a></span></li><!-- end ngRepeat: message in messages --><li ng-repeat="message in messages" class="ng-scope"><span class="message-date ng-binding">05/17</span><p><a href="https://digizag.hasoffers.com/publisher/#!/message/276508"><span ng-bind="message.title|ifEmpty:&#39;(No Title)&#39;|plainText" class="ng-binding">Offer Expiration Approaching</span></a></p><span class="remove-message"><a href="https://digizag.hasoffers.com/publisher/#" ng-click="removeMessage($event, message.id)"><i txl-icon="CloseSm"><!-- ngInclude: 'img/txl/CloseSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/CloseSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>CloseSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CloseSm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Mask" fill="#707D91" points="8.500339 7.88860639 5.64250108 4.99604174 5.03059896 5.60709635 7.88928439 8.50050851 5.03059896 11.3113901 5.64165357 11.9224447 8.500339 9.11071561 11.3556132 11.9224447 11.9666678 11.3113901 9.11139361 8.50050851 11.9658203 5.60709635 11.3556132 4.99604174"></polygon>
+    </g>
+</svg></span></i></a></span></li><!-- end ngRepeat: message in messages --><li ng-repeat="message in messages" class="ng-scope"><span class="message-date ng-binding">05/17</span><p><a href="https://digizag.hasoffers.com/publisher/#!/message/276507"><span ng-bind="message.title|ifEmpty:&#39;(No Title)&#39;|plainText" class="ng-binding">Offer Expiration Approaching</span></a></p><span class="remove-message"><a href="https://digizag.hasoffers.com/publisher/#" ng-click="removeMessage($event, message.id)"><i txl-icon="CloseSm"><!-- ngInclude: 'img/txl/CloseSm.svg' --><span class="txl-icon ng-scope" ng-include="&#39;img/txl/CloseSm.svg&#39;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>CloseSm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CloseSm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Mask" fill="#707D91" points="8.500339 7.88860639 5.64250108 4.99604174 5.03059896 5.60709635 7.88928439 8.50050851 5.03059896 11.3113901 5.64165357 11.9224447 8.500339 9.11071561 11.3556132 11.9224447 11.9666678 11.3113901 9.11139361 8.50050851 11.9658203 5.60709635 11.3556132 4.99604174"></polygon>
+    </g>
+</svg></span></i></a></span></li><!-- end ngRepeat: message in messages --></ul><p ng-show="noMessages" class="no-data-available ng-scope ng-hide"><em>No New Notifications</em></p></div></div><!-- ngIf: !hasFeatures('PREMIUM_PARTNER_INSTANCE') && showFeaturedOffersWidget --><div class="row-fluid border-left"><div id="performance" class="module span12"><h2><span class="text">Performance: Last 7 Days</span></h2><performance-chart-widget><div class="performance-chart-widget"><div class="loading ng-hide" ng-show="performanceChartLoaded==false"><i class="loading-icon"></i> Loading</div><div id="chart-controls"><div class="metric-linetypes"><!-- ngRepeat: metric in currentReport.selectedMetrics --></div></div><div id="performanceChartWidget_1" class="chart-container performance-chart" ng-show="performanceChartLoaded"><div class="no-data"><p class="no-data-available"><em>No Data</em></p><p class="msg"></p><a href="https://digizag.hasoffers.com/publisher/#!/offers" class="btn"><span>Browse Offers</span></a></div></div></div></performance-chart-widget></div></div></div></div>
+  </div>
+  <footer>
+
+  </footer>
+
+  <script> 
+document.addEventListener("DOMContentLoaded", function() {
+    var anchors = document.querySelectorAll(".sidebar-main-group-header");
+    anchors.forEach(function(anchor) {
+        var ul = anchor.nextElementSibling;
+        if (ul && ul.tagName === 'UL') {
+            anchor.addEventListener("mouseover", function() {
+                ul.classList.remove('closed');
+                ul.classList.add('open');
+            });
+        }
+    });
+
+    var sidebar = document.getElementById('sidebar');
+    sidebar.addEventListener("mouseleave", function() {
+        var openLists = document.querySelectorAll("#sidebar ul.open");
+        openLists.forEach(function(list) {
+            list.classList.remove('open');
+            list.classList.add('closed');
+        });
+    });
+});
+    </script>
+
+<!-- snippets //-->
+<script type="text/ng-template" id="grid-table-snippet.html">
+  <div id="{{gridName}}_container" class="data" jq-grid>
+    <div class="data-grid">
+      <div class="grid-pagination">
+        <div class="page-input">
+          {{'common.page'|translate}}:
+          <input type="text"
+                 ng-model="gridPageCurrent"
+                 ng-enterkey="gridUpdatePage()"
+                 class="grid-page-input"
+                 value="{{gridPageCurrent}}" />
+          {{'common.of'|translate}} <span class="grid-page-total">{{gridPageTotal}}</span>
+        </div>
+        <a ng-class="gridPagePrevDisabled()" class="btn nav grid-page-prev"><i txl-icon="ArrowLeftSm"></i></a>
+        <a ng-class="gridPageNextDisabled()" class="btn nav grid-page-next"><i txl-icon="ArrowRightSm"></i></a>
+        <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="grid-page-numrows">{{gridPageNumrows}}</span>
+              <i txl-icon="ArrowDownSm"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="val in gridPageNumrowOptions"><a ng-click="gridPageSetNumrows($event, val)"
+                                                              data-val="{{val}}">{{val}}</a></li>
+            </ul>
+          </div>
+      </div>
+      <table id="{{gridName}}" class="table table-striped jqgrid" style="position:relative"></table>
+      <div class="{{gridName}}_pager"></div>
+    </div>
+  </div>
+</script>
+
+
+<script type="text/ng-template" id="datePicker.html">
+  <input id="{{dateRangeId}}" type="hidden" value="" />
+  <a><span class="daterange-display" id="{{dateRangeId}}-display"></span><i txl-icon="ArrowDownSm"></i></a>
+
+  <div id="datepicker-controls">
+    <div class="datepicker-wrapper panel-display">
+      <div class="panel-container">
+        <div class="datepicker-layout clearfix">
+          <div class="datepicker-layout-left">
+            <ul>
+              <li>{{'common.timeframe.title.label'|translate}}</li>
+              <li ng-show="datepickerRangeOptions.today"><a data-preset="today" class="datepicker-preset">{{'common.timeframe.today'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.yesterday"><a data-preset="yesterday" class="datepicker-preset">{{'common.timeframe.yesterday'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastThreeDays"><a data-preset="last_three_days" class="datepicker-preset">{{'common.timeframe.last_three_days'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastWeek"><a data-preset="last_week" class="datepicker-preset">{{'common.timeframe.last_7_days'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastFourteenDays"><a data-preset="last_fourteen_days" class="datepicker-preset">{{'common.timeframe.last_fourteen_days'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.thisMonth"><a data-preset="this_month" class="datepicker-preset">{{'common.timeframe.this_month'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastMonth"><a data-preset="last_month" class="datepicker-preset">{{'common.timeframe.last_month'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastThirtyDays"><a data-preset="last_thirty_days" class="datepicker-preset">{{'common.timeframe.last_thirty_days'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastSixtyDays"><a data-preset="last_sixty_days" class="datepicker-preset">{{'common.timeframe.last_sixty_days'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastSixMonths"><a data-preset="last_six_months" class="datepicker-preset">{{'common.timeframe.last_6_months'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.thisYear"><a data-preset="this_year" class="datepicker-preset">{{'common.timeframe.this_year'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.lastYear"><a data-preset="last_year" class="datepicker-preset">{{'common.timeframe.last_year'|translate}}</a></li>
+              <li ng-show="datepickerRangeOptions.allTime && !hideAllTime"><a data-preset="all_time" class="datepicker-preset">{{'common.timeframe.all_time'|translate}}</a></li>
+            </ul>
+          </div>
+          <div class="datepicker-layout-right">
+            <div class="datepicker-inputs">
+              <input type="text" class="datepicker-input-start">
+              <span class="datepicker-input-dash">&mdash;</span>
+              <input type="text" class="datepicker-input-end">
+              <select class="datepicker-timezone-select" disabled="disabled">
+                <option value="">Loading timezones...</option>
+              </select>
+            </div>
+            <div class="datepicker-datepicker"></div>
+          </div>
+        </div>
+        <div class="datepicker-controls actions">
+          <a class="apply btn">{{'common.buttons.apply'|translate}}</a>
+          <a class="cancel btn btn-secondary">{{'common.buttons.cancel'|translate}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="hasTableMobileBase">
+<div class="hasTableMobileWrapper">
+  <has-pager-mobile ui-if="!noData && pagingEnabled"></has-pager-mobile>
+
+  <div class="mobile-table-data">
+
+  </div>
+
+  <div class="no-data-available" ng-show="noData">
+    <h4>{{'common.no_data'|translate}}</h4>
+  </div>
+
+  <has-pager-mobile ui-if="!noData && pagingEnabled"></has-pager-mobile>
+</div>
+</script>
+
+  <script type="text/ng-template" id="hasPagerMobile">
+      <div class="mobile-grid-pagination" ng-hide="hidePagination">
+          <div>
+              <div class="mobile-pager mobile-page-left"
+                   ng-class="{disabled: !paging.page || paging.page <= 1}">
+                  <a ng-click="gridPagePrev()"><i txl-icon="ArrowLeftSm"></i></a>
+              </div>
+          </div>
+
+    <div>
+      <div class="mobile-page-text">
+        {{'common.page'|translate}} {{currentPage}} {{'common.of'|translate}} {{paging.pageCount || 1}}
+      </div>
+    </div>
+
+          <div>
+              <div class="mobile-pager mobile-page-right"
+                   ng-class="{disabled: !paging.page ||  paging.page >= paging.pageCount}">
+                  <a ng-click="gridPageNext()"><i txl-icon="ArrowRightSm"></i></a>
+              </div>
+          </div>
+      </div>
+  </script>
+
+<script type="text/ng-template" id="hasTableBase">
+  <div class="hasTableWrapper data-grid">
+    <has-pager ui-if="pagingEnabled && isTopPagingVisible"></has-pager>
+    <table class="table table-striped hasTable">
+      <thead>
+      <tr class="hasTableHeaderRow">
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <div class="no-data" ng-show="noData">
+      <div class="no-data-available">
+        <h4>{{'common.no_data'|translate}}</h4>
+      </div>
+    </div>
+    <has-pager ui-if="pagingEnabled"></has-pager>
+  </div>
+</script>
+
+<script type="text/ng-template" id="hasPager">
+  <div class="grid-pagination" ng-hide="hidePagination">
+    <div class="page-input">
+      {{'common.page'|translate}}:
+      <input type="text"
+             ng-model="currentPage"
+             ng-enterkey="updatePageNum()"
+             class="grid-page-input" /> {{'common.of'|translate}}
+      <span class="grid-page-total">{{paging.pageCount || 1}}</span>
+    </div>
+    <a ng-class="{disabled: !paging.page || paging.page <= 1}"
+       ng-click="gridPagePrev()"
+       class="btn nav grid-page-prev"><i txl-icon="ArrowLeftSm"></i>
+    </a>
+    <a ng-class="{disabled: !paging.page ||  paging.page >= paging.pageCount}"
+       ng-click="gridPageNext()"
+       class="btn nav grid-page-next"><i txl-icon="ArrowRightSm"></i>
+    </a>
+    <div class="btn-group">
+      <a class="btn dropdown-toggle" data-toggle="dropdown">
+        <span class="grid-page-numrows">{{paging.pageSize}} {{'common.rows'|translate}}</span>
+        <i txl-icon="ArrowDownSm"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li ng-repeat="val in gridPageNumOptions">
+          <a ng-click="gridSetPageSize(val)" data-val="{{val}}">{{val}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="short-date-picker.tpl">
+  <div ng-class="{'btn-group': !isMobile}" class="short-date-picker">
+    <div ng-show="!isMobile">
+      <a class="btn dropdown-toggle" data-toggle="dropdown">
+        <span class="daterange-display">{{getSelectedDateRange().relativeRange}}</span>
+        <i txl-icon="ArrowDownSm"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li ng-repeat="obj in displayRanges">
+          <a ng-click="setSelectedIndex(obj.index)" data-val="{{obj.range}}">{{obj.range}}</a>
+        </li>
+      </ul>
+    </div>
+    <select ng-show="isMobile" ng-model="selectedDateIndex"
+      ng-options="obj.index as obj.range for obj in displayRanges">
+    </select>
+  </div>
+</script>
+
+
+</script>
+  
+    <script src="./DigiZag - Summary Report_files/jquery-1.8.3.min.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/highcharts.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/angular.min.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/jqgrid.min.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/lodash.underscore.min.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/fn.translate.min.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/vendor.min.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/application.min.js.download"></script>
+  <!-- <script src="./DigiZag - Summary Report_files/modules.min.js.download"></script> -->
+
+    <script src="./DigiZag - Summary Report_files/dictionary.js.download"></script>
+  <script src="./DigiZag - Summary Report_files/templates.js.download"></script>
+<!-- 
+  <!-- ngInclude: 'partials/report-column-snippets.html' --><div id="reportsColumnSnippets" ng-include="&#39;partials/report-column-snippets.html&#39;" class="ng-scope"><script id="report_column_offer_name" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+<div class="triangle"></div>
+
+{{if Offer && Offer.name}}
+  {{if Stat && Stat.offer_id}}
+    <a href="#!/performanceDetail/offer/${Stat.offer_id}">${Offer.name}</a>
+  {{else}}
+    <a href="#!/performanceDetail/offer/${Offer.id}">${Offer.name}</a>
+  {{/if}}
+{{else}}
+  <em>Unnamed Offer</em>
+{{/if}}
+</div></script><script id="report_column_offerurl_name" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+<div class="triangle"></div>
+{{if OfferUrl && OfferUrl.name}}
+  {{if Stat && Stat.offer_url_id}}
+    (${Stat.offer_url_id})
+  {{/if}}
+  ${OfferUrl.name}
+{{else}}
+  Default
+{{/if}}
+</div></script><script id="report_column_stat_date" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+{{if Stat.first}}
+<div class="triangle"></div>
+{{/if}}
+${Stat.date}
+</div></script><script id="report_column_stat_datehour" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+{{if Stat.first}}
+<div class="triangle"></div>
+{{/if}}
+${Stat.datehour}
+</div></script><script id="report_column_stat_hour" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+{{if Stat.first}}
+<div class="triangle"></div>
+{{/if}}
+${Stat.hour}
+</div></script><script id="report_column_stat_week" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+{{if Stat.first}}
+<div class="triangle"></div>
+{{/if}}
+${Formatter.formatWeek(ChartFactory.getHelper().parseWeek(Stat.week))}
+</div></script><script id="report_column_stat_month" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+{{if Stat.first}}
+<div class="triangle"></div>
+{{/if}}
+${Stat.month}
+</div></script><script id="report_column_stat_year" type="text/x-jquery-tmpl" class="ng-scope"><div class="col-name">
+{{if Stat.first}}
+<div class="triangle"></div>
+{{/if}}
+${Stat.year}
+</div></script></div>
+  <!-- ngInclude: undefined --><ng-include src="&#39;partials/tableTemplates/messages.html&#39;" class="ng-scope"><script type="text/ng-template" id="messagesHeaderTemplate.tpl" class="ng-scope"><th width="60">
+    <input type="checkbox" id="checkAllBoxes"/>
+  </th>
+  <th style="min-width: 100px;">Subject</th>
+  <th>Message</th>
+  <th width="120">Sent At</th></script><script type="text/ng-template" id="messagesRowTemplate.tpl" class="ng-scope"><tr>
+    <td>
+      <input type="checkbox" class="message-check" data-alert-id="{{Alert.id}}"/>
+    </td>
+    <td>
+      <a href="#!/message/{{Alert.id}}">{{Alert.title|ifEmpty:'(No Title)'|plainText}}</a>
+    </td>
+    <td>
+      <span ng-bind-html="Alert.description"></span>
+    </td>
+    <td>
+      {{Alert.datetime|date: 'M-d-yyyy'}}<br />
+      {{Alert.datetime|date: 'h:mm a'}}
+    </td>
+  </tr></script><script type="text/ng-template" id="messagesRowMobile" class="ng-scope"><div class="mobile-card-wrapper" id="message{{Alert.id}}">
+        <div class="card-header">
+          <div class="card-header-main">
+            {{Alert.title|ifEmpty:'(No Title)'}}
+          </div>
+          <div class="card-header-sub">
+            <span ng-bind-html="Alert.datetime|relativeDate"></span>
+          </div>
+        </div>
+        <div class="card-body message-body">
+          <div ng-bind-html="Alert.description"></div>
+
+          <button type="button" class="btn primary-delete" ng-click="showDeleteConfirm($event, 'message'+Alert.id);">
+            DeleteMessage
+          </button>
+
+          <div class='confirm-group clearfix'>
+            <h3>Are you sure you want to delete this message?</h3>
+            <button type="button" class="btn" ng-click="dismissMessage(Alert.id, 'message'+Alert.id)">
+              DeleteMessage
+            </button>
+            <button type="button" class="btn" ng-click="hideDeleteConfirm($event, 'message'+Alert.id)">
+              Cancel
+            </button>
+          </div>
+        </div>
+    </div></script></ng-include>
+  <!-- ngInclude: undefined --><ng-include src="&#39;partials/tableTemplates/affiliateUsers.html&#39;" class="ng-scope"><script type="text/ng-template" id="affiliateUsersHeaderTemplate.tpl" class="ng-scope"><th>Last Name</th>
+  <th>First Name</th>
+  <th>Title</th>
+  <th>Email</th>
+  <th>Updated</th></script><script type="text/ng-template" id="affiliateUsersRowTemplate.tpl" class="ng-scope"><tr>
+    <td>
+      <a href="#!/account/{{id}}">
+        {{last_name|ifEmpty:'(No Name)'}}
+      </a>
+    </td>
+
+    <td>
+      <a href="#!/account/{{id}}">
+        {{first_name|ifEmpty:'(No Name)'}}
+      </a>
+    </td>
+
+    <td>
+      {{title}}
+    </td>
+
+    <td>
+      <a href="mailto:{{email}}">{{email}}</a>
+    </td>
+
+    <td>
+      <i>{{modified}}</i>
+    </td>
+  </tr></script></ng-include>
+  <!-- ngInclude: undefined --><ng-include src="&#39;partials/tableTemplates/billing.html&#39;" class="ng-scope"><script type="text/ng-template" id="billingInvoicesHeaderTemplate.tpl" class="ng-scope"><th>Statement</th>
+  <th>Date/Time</th>
+  <th>Message</th>
+  <th>Amount</th></script><script type="text/ng-template" id="billingInvoicesRowTemplate.tpl" class="ng-scope"><tr>
+    <td>
+      <a href="#!/invoice/{{AffiliateInvoice.id}}">
+         Invoice #{{AffiliateInvoice.id}}
+      </a>
+    </td>
+    <td>
+      {{AffiliateInvoice.datetime}}
+    </td>
+    <td>
+      {{AffiliateInvoice.memo}}
+    </td>
+    <td>
+      {{AffiliateInvoice.amount|currency:AffiliateInvoice.currency}}
+    </td>
+  </tr></script><script type="text/ng-template" id="billingPaymentsHeaderTemplate.tpl" class="ng-scope"><th>Payment</th>
+  <th>Date/Time</th>
+  <th>Status</th>
+  <th>Memo</th>
+  <th>Method</th>
+  <th>Amount</th></script><script type="text/ng-template" id="billingPaymentsRowTemplate.tpl" class="ng-scope"><tr>
+    <td>
+      <a href="#!/receipt/{{AffiliateReceipt.id}}">
+        Receipt #{{AffiliateReceipt.id}}
+      </a>
+    </td>
+    <td>
+      {{AffiliateReceipt.datetime}}
+    </td>
+    <td>
+      {{AffiliateReceipt.status}}
+    </td>
+    <td>
+      {{AffiliateReceipt.memo}}
+    </td>
+    <td>
+      {{formatPaymentMethod(AffiliateReceipt.method)|translate}}
+    </td>
+    <td>
+      {{AffiliateReceipt.amount|currency:AffiliateReceipt.currency}}
+    </td>
+  </tr></script></ng-include>
+
+
+<script type="text/javascript">
+  // event emitter for Publisher Interface custom footer
+  // See: https://help.tune.com/hasoffers/affiliate-interface-custom-code/
+  publicEvent = new EventEmitter();
+</script>
+ -->
+
+
+</div></body></html>
